@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	// hide preloder
-	$(".preloader").hide();
+	// $(".preloader").hide();
 
 	// header animation on scroll
 	$(window).on('load scroll',function() {

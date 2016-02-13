@@ -166,6 +166,7 @@ a.link:after{
 }
 a.link:hover:after{width: 50%;}
 a.link:hover{text-decoration: none;}
+.menu-content .link:hover {color:white;}
 
 .bigger-title{
 	font-size: 3.000em;
@@ -1607,4 +1608,13 @@ ul.instagram li img{width: 100%;}
 .co-p-solutions .co-p-solutions-devops .co-p-solutions-devops-signup {
     text-align: center;
     margin-top: 30px
+}
+
+.canvas_map {
+	background:  rgba(0,0,0,0.03) !important;
+	opacity: 0.2;
+	pointer-events: none;
+}
+.gmnoprint, .gm-style-cc {
+	display: none;
 }

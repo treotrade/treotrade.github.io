@@ -65,4 +65,19 @@ $(document).ready(function(){
 			left : "-100%",
 		},200,"easeInCirc");
 	});
+
+	//google maps
+	new Maplace({
+	    map_options: {
+	    	controls_on_map : false,
+	    	show_markers: false,
+	    	draggable : false,
+	    	show_infowindows: false,
+
+	        set_center: [51.5044953, -0.0117329],
+	        zoom: 14,
+
+	        styles: [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}],
+	    }
+	}).Load();
 });

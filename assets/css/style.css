@@ -944,7 +944,7 @@ footer.main-footer{
 			margin: 0 20px;
 			color:#7f7f7f;
 			text-transform: uppercase;
-			font-family: "Montserrat", sans-serif;
+			/*font-family: "Montserrat", sans-serif;*/
 			font-size: 0.875em;
 		}
 footer div[class^="col-"]{

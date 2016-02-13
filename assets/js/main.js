@@ -37,10 +37,10 @@ $(document).ready(function(){
 
 	$(".menu-wrapper .menu_demo").children("li").children("a").each(function(){
 		$(this).mouseenter(function() {
-			if ($(".demorolle img").attr("src") != $(this).data("img"))
+			if ($(".demorolle img").css('opacity') != "0.25")
 				$(".demorolle img").stop().animate({
 					top: "-200px",
-					opacity : "0.2"
+					opacity : "0.25"
 				},800);
 			$(".demorolle img").attr("src",$(this).data("img"));
 		});

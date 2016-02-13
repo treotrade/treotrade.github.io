@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 	$(".menu-wrapper .menu_demo").children("li").children("a").each(function(){
 		$(this).mouseenter(function() {
-			if ($(".demorolle img").css('opacity') != "0.25")
+			// if (+ ($(".demorolle img").css('opacity')) < 0.2)
 				$(".demorolle img").stop().animate({
 					top: "-200px",
 					opacity : "0.25"
@@ -45,7 +45,6 @@ $(document).ready(function(){
 			$(".demorolle img").attr("src",$(this).data("img"));
 		});
 		$(this).mouseout(function() {
-			$(".demorolle img").attr("src","");
 			$(".demorolle img").finish().animate({
 				top: "0px",
 				opacity : "0"

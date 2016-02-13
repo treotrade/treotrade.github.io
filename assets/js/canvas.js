@@ -8,6 +8,7 @@
  * Constructor
  */
 function Animate(canvas, options) {
+  this._skipFrame = 0;
   this.canvas = canvas;
   this.options = defaults(options || {}, this.options);
   this.init();
@@ -130,6 +131,8 @@ Animate.prototype.findClosest = function() {
  * Animation Loop
  */
 Animate.prototype.animate = function() {
+  this._skipFrame++; if (this._skipFrame > 4) this._skipFrame = 0 ;
+  if (this._skipFrame === 0) {
   var i;
   // Should we recalucate closest?
   if(this.options.updateClosest) {
@@ -159,6 +162,7 @@ Animate.prototype.animate = function() {
     this.points[i].drawLines();
     this.points[i].circle.draw();
   }
+ }
  // Loop
  window.requestAnimationFrame(this.animate.bind(this));
 };

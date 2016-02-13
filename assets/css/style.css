@@ -55,7 +55,7 @@ p.text2{
 /*button*/
 .btn{
 	display: inline-block;
-	border-radius: 50px;
+	/*border-radius: 50px;*/
 	padding: 15px 30px;
 	min-width: 150px;
 	font-family: "Montserrat", sans-serif;
@@ -389,7 +389,7 @@ header.main-header.shown{
 		display: block;
 		width: 100%;
 		text-align: center;
-		color:rgba(255,255,255,.5);
+		color:rgba(255,255,255,1);
 		font-family: "Montserrat", sans-serif;
 		text-transform: uppercase;
 		font-size: .75em;
@@ -401,7 +401,7 @@ header.main-header.shown{
 		opacity: 0;
 	}
 	.menu-wrapper nav ul.first-level_menu > li > a:after{
-		content: "";
+		content: " ";
 		position: absolute;
 		bottom:0;
 		left: 50%;
@@ -410,6 +410,18 @@ header.main-header.shown{
 		height: 1px;
 		width: 80%;
 		background-color: rgba(255,255,255,.25);
+		transition:all .2s ease-in-out;
+	}
+	.menu-wrapper nav ul.first-level_menu > li > a .error {
+		color: #A90000;
+    	font-size: 0.5em;
+		position: absolute;
+		top:1.5em;
+		left: 50%;
+		-webkit-transform:translateX(-50%);
+		        transform:translateX(-50%);
+		height: 1px;
+		width: 80%;
 		transition:all .2s ease-in-out;
 	}
 	.menu-wrapper nav ul.first-level_menu > li > a:hover:after,
@@ -1615,6 +1627,39 @@ ul.instagram li img{width: 100%;}
 	opacity: 0.2;
 	pointer-events: none;
 }
+.canvas_map:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 55%;
+  top: 0;
+  background: -webkit-linear-gradient(#1c1d20,transparent) left repeat;
+  background: linear-gradient(#1c1d20,transparent) left repeat; 
+}
 .gmnoprint, .gm-style-cc {
 	display: none;
+}
+
+.demorolle {
+	position:absolute;
+	top: 40%;
+	left: 30%;
+}
+.demorolle img {
+	opacity: 0;
+    position: absolute;
+    width: 500px;
+    left: calc(50% - 250px);
+    top: 0px;
+}
+.demorolle img:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 65%;
+  top: 0;
+  background: -webkit-linear-gradient(#1c1d20,transparent) left repeat;
+  background: linear-gradient(#1c1d20,transparent) left repeat; 
 }

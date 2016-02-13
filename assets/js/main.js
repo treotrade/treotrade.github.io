@@ -51,6 +51,9 @@ $(document).ready(function(){
 				opacity : "0"
 			},200);
 		});
+		$(this).click(function(e){
+			e.preventDefault();
+		});
 	});
 
 	// show menu content

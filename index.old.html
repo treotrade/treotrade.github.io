@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,34 +25,86 @@
 </head>
 <body>
 
-<div id="landing-container">
-<div id="landing-overlay">
-  <canvas id="canvas" class="animCanvas"></canvas>
+<!-- preloader
+<div class="preloader">
+  <img src="assets/img/preloader.svg" class="progress" alt="">
 </div>
-<div class="header">
-	<h1>Engage. <br> Enable.<br> Evolve.</h1>
-	<p>Bespoke IT solutions for the Asset Management Industry.</p>
-</div>
-<span id="more"><i class="icon ion-chevron-down"> </i></span>
-</div>
-
+ -->
+ 
 <!-- main header -->
 <header class="main-header">
   <!-- container -->
   <div class="container">
     <!-- logo -->
-    <a href="#" class="logo-text">TreoTrade</a>
+    <a href="#"><img src="assets/img/logo.svg" alt="logo"></a>
     <!-- menu -->
     <div class="menu">
-    <!--   <div class="uppercase menu-text"><a href="solutions.html">solutions</a></div>
-      <div class="uppercase menu-text"><a href="technology.html">technology</a></div>
-      <div class="uppercase menu-text"><a href="aboutus.html">company</a></div>
-      <div class="uppercase menu-text"><a href="careers.html">careers</a></div> -->
-      <div class="uppercase menu-text"><a href="#contact">contact</a></div>
+      <div class="montserrat-text uppercase menu-text">login</div>
+    </div>
+
+    <!-- menu content -->
+    <div class="menu-content">
+      <!-- close button -->
+      <a href="#" class="close-button"><i class="icon ion-ios-close-empty"></i></a>
+      <div class="menu-info">
+        <div id="gmap" style="height:300px; margin-left: -3.5em; margin-right: 1.2em;"></div>
+        <div style="font-size: 12px;margin-top: 1em;">
+        <div class="white-text montserrat-text ">© 2016 TreoTrade Ltd.</div>
+        <a href="mailto:info@treotrade.com" class="link"><em>info@treotrade.com</em></a>
+        <div></div>
+
+        </div>
+      </div>
+      <div class="demorolle">
+        <img src="assets/img/logo.svg" width="200"></a>
+        <a href="mailto:info@treotrade.com" class="btn empty" style=""><span><i class="icon ion-ios-chatboxes" style="font-size: 1.5em;margin-right: 1em"></i> Request Demo</span></a>
+      </div>
+
+      <!-- menu links wrapper-->
+      <div class="menu-wrapper">
+        <nav>
+          <ul class="first-level_menu">
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="index.html">Demo</a>
+              <ul class="second-level_menu menu_demo" style="display: block;">
+                <li><a href="index.html" data-img="assets/img/demo_dma.gif" class="link">EMS Trading</a></li>
+                <li><a href="index.html" data-img="assets/img/demo_ems.png" class="link">P&amp;L View</a></li>
+                <li><a href="index.html" data-img="assets/img/demo_signal.png" class="link">Signal Manager</a></li>
+              </ul>
+            </li>
+            <li><a href="">Portal<span class="error" style="display: none">Restricted IP, Contact Support</span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- end menu links wrapper -->
+
     </div>
   </div>
 </header>
 <!-- end main header -->
+
+<div class="boxed-width home-slider">
+  <canvas id="canvas" class="animCanvas"></canvas>
+  <div class="slider">
+    <ul class="slides">
+      <!-- slide -->
+      <li>
+        <div class="slide">
+
+          <span class="main-slider-title">
+            <span class="big-slider-title montserrat-text uppercase white-text" style="text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);">TreoTrade</span>
+          </span>
+          <div class="small-slider-title white-text" style="margin:20px 0">
+            Bespoke IT Solutions for the Asset Management Industry. 
+          </div>
+        </div>
+
+      </li>
+      <!-- end slide -->
+    </ul>
+  </div>
+</div>
+<!-- end slider -->
 
 <!-- who are we section -->
 <section id="aboutus">
@@ -59,8 +112,6 @@
     <div class="col-md-offset-1 col-md-10">
       <h3 style="line-height: inherit;">
       We have extensive experience delivering complete solutions encompassing Electronic Trading (OMS and EMS), Risk Management, Portfolio Management including full hosting and support for these solutions. We are also able to provide advisory services for vendor selection and IT strategy.
-      <br/>
-      <br/>
       </h3>
     </div>  
   </div>
@@ -361,7 +412,7 @@
 <!-- end who are we section -->
 
 <!-- footer -->
-<footer id="contact" class="main-footer">
+<footer class="main-footer">
   <div class="container">
     <div class="col-md-3">
       <a href="#"><img src="assets/img/logo.svg" alt="logo image"></a><BR/>
@@ -371,7 +422,18 @@
            <div><small>© 2016 TreoTrade Ltd.</small></div>
       </div>
     </div>
-    <div class="col-md-2 pull-right">
+    <div class="col-md-7">
+      <div class="row">
+        <nav>
+          <ul>
+            <li><a href="#aboutus" class="link">about us</a></li>
+            <li><a href="#services" class="link">services</a></li>
+            <li><a href="mailto:info@treotrade.com" class="link">contact us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="col-md-2">
       <!-- social icons -->
       <div class="social-icons">
         <a href="mailto:info@treotrade.com" class="social-icon__"><i class="icon ion-android-mail"></i></a>
@@ -385,8 +447,34 @@
 
 <script type="text/javascript" src="assets/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="assets/js/smoothScroll.js"></script>
+<script type="text/javascript" src="assets/js/easings.js"></script>
+<script type="text/javascript" src="assets/js/jquery.flexslider.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript" src="assets/js/TweenMax.min.js"></script>
 <script type="text/javascript" src="assets/js/canvas.js"></script>
+
+<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="assets/js/maplace.min.js"></script>
+
+<script type="text/javascript">
+  // $(document).ready(function() {
+  //   $('.slider').flexslider({
+  //     animation: "fade",
+  //     slideshowSpeed: 3000,
+  //     directionNav: false,  
+  //     controlNav: true,
+  //   });
+
+  //   // direction navigation
+  //   $(".next-arrow").click(function(){
+  //     $('.slider').flexslider("next");
+  //   });
+  //   $(".prev-arrow").click(function(){
+  //     $('.slider').flexslider("prev");
+  //   });
+
+  // });
+</script>
 
 <!-- 
 

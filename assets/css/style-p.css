@@ -1,0 +1,79 @@
+.p-technology {
+    background: url(../img/Globe-header2.svg),linear-gradient(0deg,transparent 52%,#1c1d20),linear-gradient(125deg,#1c1d20,transparent),linear-gradient(125deg,#1a6494,#1B384B 100%),#8a9ba7;
+    background-color: #8A9BA7;
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+.p-technology-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 50px;
+    z-index: 1;
+    position: relative;
+}
+.p-technology-container h1 {
+    color: #f9a559;
+    font-weight: 400
+}
+.p-technology-container h2 {
+    color: #6CBAF0;
+    margin: 0 0 50px;
+    font-weight: 200;
+    letter-spacing: 1.31px;
+}
+.p-technology-container p {
+    color: #fff;
+    font-weight: 200;
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 28px;
+}
+
+.p-technology-container p.heavy {
+	font-weight: 600;
+    font-size: 0.9em;
+}
+
+.center {
+    text-align: center;
+}
+
+.p-technology-container .divider {
+    border-left: 1px solid #F9A659;
+    height: 235px;
+    position: absolute;
+    top: 10px
+}
+
+.p-technology-container .more {
+    margin: 140px 0 20px
+}
+
+@media (max-width: 992px) {
+    .p-technology-container .divider {
+        /*border-bottom:1px solid #F9A659;*/
+        border-left: none;
+        height: 1px;
+        position: initial;
+        margin: 20px 0
+    }
+
+    .p-technology-container .hide-md {
+        display: none
+    }
+    .p-technology-container .more {
+        margin:50px 0 20px
+    }
+}
+
+@media (max-width: 740px) {
+	.p-technology-container .more {
+	    margin-left: 0
+	}
+
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13 / 10), only screen and (min-resolution: 120dpi) {
+	.p-technology-container p{
+        font-weight:300;
+	}
+}

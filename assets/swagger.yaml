@@ -1,0 +1,4394 @@
+basePath: /api
+consumes:
+- application/json
+definitions:
+  Account:
+    description: Account media type (default view)
+    example:
+      account: Atque esse sed cum voluptate esse quod.
+      account_id: 3.6154372e+18
+      broker_organisation: Ex odio.
+      enabled: true
+      market_connector: Voluptatem aut.
+      owner_organisation: Possimus fugit.
+    properties:
+      account:
+        example: Atque esse sed cum voluptate esse quod.
+        type: string
+      account_id:
+        example: 3.6154372e+18
+        format: int64
+        type: integer
+      broker_organisation:
+        example: Ex odio.
+        type: string
+      enabled:
+        example: true
+        type: boolean
+      market_connector:
+        example: Voluptatem aut.
+        type: string
+      owner_organisation:
+        example: Possimus fugit.
+        type: string
+    title: 'Mediatype identifier: application/vnd.account+json; view=default'
+    type: object
+  AccountCollection:
+    description: AccountCollection is the media type for an array of Account (default
+      view)
+    example:
+    - account: Atque esse sed cum voluptate esse quod.
+      account_id: 3.6154372e+18
+      broker_organisation: Ex odio.
+      enabled: true
+      market_connector: Voluptatem aut.
+      owner_organisation: Possimus fugit.
+    - account: Atque esse sed cum voluptate esse quod.
+      account_id: 3.6154372e+18
+      broker_organisation: Ex odio.
+      enabled: true
+      market_connector: Voluptatem aut.
+      owner_organisation: Possimus fugit.
+    - account: Atque esse sed cum voluptate esse quod.
+      account_id: 3.6154372e+18
+      broker_organisation: Ex odio.
+      enabled: true
+      market_connector: Voluptatem aut.
+      owner_organisation: Possimus fugit.
+    items:
+      $ref: '#/definitions/Account'
+    title: 'Mediatype identifier: application/vnd.account+json; type=collection; view=default'
+    type: array
+  AcquisitionPayload:
+    example:
+      acquisition_price: 0.9851448
+      description: 'Acquisition of XYZ by ABC Corp '
+      event_timestamp: 2016-07-03 01:00:00
+      ex_date: 2016-08-08
+      new_security_id_source: RIC
+      params: '{"security_id": "12312312345"}'
+      record_date: 2016-08-05
+      security_id: IBM.N
+      security_id_source: RIC
+      unique_reference: xyz123
+    properties:
+      acquisition_price:
+        description: Acquisition Price e.g 24.6
+        example: 0.9851448
+        format: double
+        type: number
+      description:
+        default: No description supplied
+        description: Describes Corporate Action
+        example: 'Acquisition of XYZ by ABC Corp '
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      ex_date:
+        example: 2016-08-08
+        type: string
+      new_security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this Corporate Action
+        example: '{"security_id": "12312312345"}'
+        type: string
+      record_date:
+        example: 2016-08-05
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      unique_reference:
+        default: No description supplied
+        description: Unique Corporate Action Reference
+        example: xyz123
+        type: string
+    required:
+    - security_id
+    - ex_date
+    - acquisition_price
+    - event_timestamp
+    title: AcquisitionPayload
+    type: object
+  Allocation:
+    description: Allocation media type (default view)
+    example:
+      allocation_id: 4.811911e+18
+      book_name: Accusantium iste facere molestiae ex tempora.
+      order_id: 1.7188133e+18
+      position_key: 1.5275714e+18
+      quantity: 0.7825839
+      tag: Accusamus ipsa ipsa enim.
+    properties:
+      allocation_id:
+        description: Allocation ID
+        example: 4.811911e+18
+        format: int64
+        type: integer
+      book_name:
+        example: Accusantium iste facere molestiae ex tempora.
+        type: string
+      order_id:
+        description: Order Id
+        example: 1.7188133e+18
+        format: int64
+        type: integer
+      position_key:
+        description: Position Key
+        example: 1.5275714e+18
+        format: int64
+        type: integer
+      quantity:
+        example: 0.7825839
+        format: double
+        type: number
+      tag:
+        example: Accusamus ipsa ipsa enim.
+        type: string
+    title: 'Mediatype identifier: application/vnd.allocation+json; view=default'
+    type: object
+  AllocationCollection:
+    description: AllocationCollection is the media type for an array of Allocation
+      (default view)
+    example:
+    - allocation_id: 4.811911e+18
+      book_name: Accusantium iste facere molestiae ex tempora.
+      order_id: 1.7188133e+18
+      position_key: 1.5275714e+18
+      quantity: 0.7825839
+      tag: Accusamus ipsa ipsa enim.
+    items:
+      $ref: '#/definitions/Allocation'
+    title: 'Mediatype identifier: application/vnd.allocation+json; type=collection;
+      view=default'
+    type: array
+  AllocationPayload:
+    example:
+      book_name: Systematic Event
+      quantity: 0.8371804
+      tag: None
+    properties:
+      book_name:
+        example: Systematic Event
+        minLength: 2
+        type: string
+      quantity:
+        example: 0.8371804
+        format: double
+        type: number
+      tag:
+        default: None
+        example: None
+        type: string
+    required:
+    - book_name
+    - quantity
+    title: AllocationPayload
+    type: object
+  AvailableStockPayload:
+    example:
+      fee_bps: 0.9756747
+      quantity: 0.6584422
+      security_id: IBM.N
+      security_id_source: RIC
+    properties:
+      fee_bps:
+        description: signed amount +ve for recieved -ve paid in local currency
+        example: 0.9756747
+        format: double
+        type: number
+      quantity:
+        description: Number of shares available to borrow.
+        example: 0.6584422
+        format: double
+        type: number
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - ISIN
+        example: RIC
+        type: string
+    title: AvailableStockPayload
+    type: object
+  Book:
+    description: Book media type (default view)
+    example:
+      book_id: 8.6632374e+18
+      book_name: Perferendis voluptas qui possimus qui voluptas.
+      rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+    properties:
+      book_id:
+        example: 8.6632374e+18
+        format: int64
+        type: integer
+      book_name:
+        example: Perferendis voluptas qui possimus qui voluptas.
+        type: string
+      rollover_date:
+        example: Nesciunt numquam rerum vel ut nesciunt.
+        type: string
+    title: 'Mediatype identifier: application/vnd.book+json; view=default'
+    type: object
+  CapitalPayload:
+    example:
+      amount_book_ccy: 0.9569114
+      book_name: Systematic Event
+      description: Subscription received
+      event_timestamp: 2016-07-03 01:00:00
+      params: '{"Counterparty": "New Edge"}'
+      tag: None
+    properties:
+      amount_book_ccy:
+        description: signed amount +ve for subscriptions -ve redemptions in fund currency
+        example: 0.9569114
+        format: double
+        type: number
+      book_name:
+        example: Systematic Event
+        minLength: 2
+        type: string
+      description:
+        default: No Description supplied
+        description: Reason for capital movement.
+        example: Subscription received
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this cash event.
+        example: '{"Counterparty": "New Edge"}'
+        type: string
+      tag:
+        default: None
+        example: None
+        type: string
+    required:
+    - book_name
+    - event_timestamp
+    - amount_book_ccy
+    title: CapitalPayload
+    type: object
+  CashEventPayload:
+    example:
+      capital:
+      - amount_book_ccy: 0.9569114
+        book_name: Systematic Event
+        description: Subscription received
+        event_timestamp: 2016-07-03 01:00:00
+        params: '{"Counterparty": "New Edge"}'
+        tag: None
+      - amount_book_ccy: 0.9569114
+        book_name: Systematic Event
+        description: Subscription received
+        event_timestamp: 2016-07-03 01:00:00
+        params: '{"Counterparty": "New Edge"}'
+        tag: None
+      - amount_book_ccy: 0.9569114
+        book_name: Systematic Event
+        description: Subscription received
+        event_timestamp: 2016-07-03 01:00:00
+        params: '{"Counterparty": "New Edge"}'
+        tag: None
+      dividends:
+      - book_name: Systematic Event
+        description: Dividend received
+        event_timestamp: 2016-07-03 01:00:00
+        fx_rate: 0.06888432
+        net_amount_book_ccy: 0.25313693
+        net_amount_local_ccy: 0.7545173
+        params: '{"Counterparty": "New Edge"}'
+        security_id: IBM.N
+        security_id_source: RIC
+        tag: None
+        unique_reference: xyz123
+      - book_name: Systematic Event
+        description: Dividend received
+        event_timestamp: 2016-07-03 01:00:00
+        fx_rate: 0.06888432
+        net_amount_book_ccy: 0.25313693
+        net_amount_local_ccy: 0.7545173
+        params: '{"Counterparty": "New Edge"}'
+        security_id: IBM.N
+        security_id_source: RIC
+        tag: None
+        unique_reference: xyz123
+      interest:
+      - accrued: true
+        amount_book_ccy: 0.49950752
+        amount_local_ccy: 0.8397192
+        book_name: Systematic Event
+        currency: USD
+        description: Long Financing
+        event_timestamp: 2016-07-03 01:00:00
+        fx_rate: 0.7269619
+        params: '{"Counterparty": "New Edge"}'
+        tag: None
+      stock_loan:
+      - accrued: true
+        book_name: Systematic Event
+        description: Stock loan fees
+        event_timestamp: 2016-07-03 01:00:00
+        fee_book_ccy: 0.42461252
+        fee_local_ccy: 0.26743448
+        fx_rate: 0.39060384
+        params: '{"Stock loan rate": "2.3"}'
+        security_id: IBM.N
+        security_id_source: RIC
+        tag: None
+    properties:
+      capital:
+        description: Capital subscriptions redemptions.
+        example:
+        - amount_book_ccy: 0.9569114
+          book_name: Systematic Event
+          description: Subscription received
+          event_timestamp: 2016-07-03 01:00:00
+          params: '{"Counterparty": "New Edge"}'
+          tag: None
+        - amount_book_ccy: 0.9569114
+          book_name: Systematic Event
+          description: Subscription received
+          event_timestamp: 2016-07-03 01:00:00
+          params: '{"Counterparty": "New Edge"}'
+          tag: None
+        - amount_book_ccy: 0.9569114
+          book_name: Systematic Event
+          description: Subscription received
+          event_timestamp: 2016-07-03 01:00:00
+          params: '{"Counterparty": "New Edge"}'
+          tag: None
+        items:
+          $ref: '#/definitions/CapitalPayload'
+        type: array
+      dividends:
+        description: Dividends.
+        example:
+        - book_name: Systematic Event
+          description: Dividend received
+          event_timestamp: 2016-07-03 01:00:00
+          fx_rate: 0.06888432
+          net_amount_book_ccy: 0.25313693
+          net_amount_local_ccy: 0.7545173
+          params: '{"Counterparty": "New Edge"}'
+          security_id: IBM.N
+          security_id_source: RIC
+          tag: None
+          unique_reference: xyz123
+        - book_name: Systematic Event
+          description: Dividend received
+          event_timestamp: 2016-07-03 01:00:00
+          fx_rate: 0.06888432
+          net_amount_book_ccy: 0.25313693
+          net_amount_local_ccy: 0.7545173
+          params: '{"Counterparty": "New Edge"}'
+          security_id: IBM.N
+          security_id_source: RIC
+          tag: None
+          unique_reference: xyz123
+        items:
+          $ref: '#/definitions/DividendPayload'
+        type: array
+      interest:
+        description: Interest paid, received or accrued.
+        example:
+        - accrued: true
+          amount_book_ccy: 0.49950752
+          amount_local_ccy: 0.8397192
+          book_name: Systematic Event
+          currency: USD
+          description: Long Financing
+          event_timestamp: 2016-07-03 01:00:00
+          fx_rate: 0.7269619
+          params: '{"Counterparty": "New Edge"}'
+          tag: None
+        items:
+          $ref: '#/definitions/InterestPayload'
+        type: array
+      stock_loan:
+        description: Stock Loan Fees.
+        example:
+        - accrued: true
+          book_name: Systematic Event
+          description: Stock loan fees
+          event_timestamp: 2016-07-03 01:00:00
+          fee_book_ccy: 0.42461252
+          fee_local_ccy: 0.26743448
+          fx_rate: 0.39060384
+          params: '{"Stock loan rate": "2.3"}'
+          security_id: IBM.N
+          security_id_source: RIC
+          tag: None
+        items:
+          $ref: '#/definitions/StockLoanPayload'
+        type: array
+    title: CashEventPayload
+    type: object
+  ClosingPriceInstrumentPayload:
+    example:
+      close_date: 2016-07-03
+      external_id: Iusto in possimus occaecati at.
+      price: 0.25112942
+    properties:
+      close_date:
+        example: 2016-07-03
+        type: string
+      external_id:
+        description: instrument external id
+        example: Iusto in possimus occaecati at.
+        type: string
+      price:
+        description: closing price.
+        example: 0.25112942
+        format: double
+        type: number
+    required:
+    - external_id
+    - close_date
+    - price
+    title: ClosingPriceInstrumentPayload
+    type: object
+  ComplianceResultItem:
+    example:
+      constraint_lbound: 0.04003632
+      constraint_name: Nihil aut sequi at sunt praesentium qui.
+      constraint_ubound: 0.019225316
+      constraint_value: 0.16726182
+      rule_name: Impedit eos consequatur inventore.
+      text: Aspernatur harum.
+    properties:
+      constraint_lbound:
+        example: 0.04003632
+        format: double
+        type: number
+      constraint_name:
+        example: Nihil aut sequi at sunt praesentium qui.
+        type: string
+      constraint_ubound:
+        example: 0.019225316
+        format: double
+        type: number
+      constraint_value:
+        example: 0.16726182
+        format: double
+        type: number
+      rule_name:
+        example: Impedit eos consequatur inventore.
+        type: string
+      text:
+        example: Aspernatur harum.
+        type: string
+    title: ComplianceResultItem
+    type: object
+  Complianceresult:
+    description: Complianceresult media type (default view)
+    example:
+      errors:
+      - constraint_lbound: 0.04003632
+        constraint_name: Nihil aut sequi at sunt praesentium qui.
+        constraint_ubound: 0.019225316
+        constraint_value: 0.16726182
+        rule_name: Impedit eos consequatur inventore.
+        text: Aspernatur harum.
+      ok: false
+      warnings:
+      - constraint_lbound: 0.04003632
+        constraint_name: Nihil aut sequi at sunt praesentium qui.
+        constraint_ubound: 0.019225316
+        constraint_value: 0.16726182
+        rule_name: Impedit eos consequatur inventore.
+        text: Aspernatur harum.
+      - constraint_lbound: 0.04003632
+        constraint_name: Nihil aut sequi at sunt praesentium qui.
+        constraint_ubound: 0.019225316
+        constraint_value: 0.16726182
+        rule_name: Impedit eos consequatur inventore.
+        text: Aspernatur harum.
+      - constraint_lbound: 0.04003632
+        constraint_name: Nihil aut sequi at sunt praesentium qui.
+        constraint_ubound: 0.019225316
+        constraint_value: 0.16726182
+        rule_name: Impedit eos consequatur inventore.
+        text: Aspernatur harum.
+    properties:
+      errors:
+        example:
+        - constraint_lbound: 0.04003632
+          constraint_name: Nihil aut sequi at sunt praesentium qui.
+          constraint_ubound: 0.019225316
+          constraint_value: 0.16726182
+          rule_name: Impedit eos consequatur inventore.
+          text: Aspernatur harum.
+        items:
+          $ref: '#/definitions/ComplianceResultItem'
+        type: array
+      ok:
+        description: Complaince check results Pass/Fail
+        example: false
+        type: boolean
+      warnings:
+        example:
+        - constraint_lbound: 0.04003632
+          constraint_name: Nihil aut sequi at sunt praesentium qui.
+          constraint_ubound: 0.019225316
+          constraint_value: 0.16726182
+          rule_name: Impedit eos consequatur inventore.
+          text: Aspernatur harum.
+        - constraint_lbound: 0.04003632
+          constraint_name: Nihil aut sequi at sunt praesentium qui.
+          constraint_ubound: 0.019225316
+          constraint_value: 0.16726182
+          rule_name: Impedit eos consequatur inventore.
+          text: Aspernatur harum.
+        - constraint_lbound: 0.04003632
+          constraint_name: Nihil aut sequi at sunt praesentium qui.
+          constraint_ubound: 0.019225316
+          constraint_value: 0.16726182
+          rule_name: Impedit eos consequatur inventore.
+          text: Aspernatur harum.
+        items:
+          $ref: '#/definitions/ComplianceResultItem'
+        type: array
+    title: 'Mediatype identifier: application/vnd.complianceresult+json; view=default'
+    type: object
+  CorporateActionPayload:
+    example:
+      acquisition:
+      - acquisition_price: 0.9851448
+        description: 'Acquisition of XYZ by ABC Corp '
+        event_timestamp: 2016-07-03 01:00:00
+        ex_date: 2016-08-08
+        new_security_id_source: RIC
+        params: '{"security_id": "12312312345"}'
+        record_date: 2016-08-05
+        security_id: IBM.N
+        security_id_source: RIC
+        unique_reference: xyz123
+      - acquisition_price: 0.9851448
+        description: 'Acquisition of XYZ by ABC Corp '
+        event_timestamp: 2016-07-03 01:00:00
+        ex_date: 2016-08-08
+        new_security_id_source: RIC
+        params: '{"security_id": "12312312345"}'
+        record_date: 2016-08-05
+        security_id: IBM.N
+        security_id_source: RIC
+        unique_reference: xyz123
+      spin_off:
+      - description: 'Stock Split IBM  2:1 '
+        event_timestamp: 2016-07-03 01:00:00
+        ex_date: 2016-08-08
+        new_security_id: IBM.N
+        new_security_id_source: RIC
+        params: '{"security_id": "12312312345"}'
+        record_date: 2016-08-05
+        security_id: IBM.N
+        security_id_source: RIC
+        spinoff_ratio: 0.72619206
+        unique_reference: xyz123
+      stock_split:
+      - description: 'Stock Split IBM  2:1 '
+        event_timestamp: 2016-07-03 01:00:00
+        ex_date: 2016-08-08
+        params: '{"security_id": "12312312345"}'
+        record_date: 2016-08-05
+        security_id: IBM.N
+        security_id_source: RIC
+        split_ratio: 0.059567068
+        unique_reference: xyz123
+    properties:
+      acquisition:
+        description: Acquisition.
+        example:
+        - acquisition_price: 0.9851448
+          description: 'Acquisition of XYZ by ABC Corp '
+          event_timestamp: 2016-07-03 01:00:00
+          ex_date: 2016-08-08
+          new_security_id_source: RIC
+          params: '{"security_id": "12312312345"}'
+          record_date: 2016-08-05
+          security_id: IBM.N
+          security_id_source: RIC
+          unique_reference: xyz123
+        - acquisition_price: 0.9851448
+          description: 'Acquisition of XYZ by ABC Corp '
+          event_timestamp: 2016-07-03 01:00:00
+          ex_date: 2016-08-08
+          new_security_id_source: RIC
+          params: '{"security_id": "12312312345"}'
+          record_date: 2016-08-05
+          security_id: IBM.N
+          security_id_source: RIC
+          unique_reference: xyz123
+        items:
+          $ref: '#/definitions/AcquisitionPayload'
+        type: array
+      spin_off:
+        description: Spinoff.
+        example:
+        - description: 'Stock Split IBM  2:1 '
+          event_timestamp: 2016-07-03 01:00:00
+          ex_date: 2016-08-08
+          new_security_id: IBM.N
+          new_security_id_source: RIC
+          params: '{"security_id": "12312312345"}'
+          record_date: 2016-08-05
+          security_id: IBM.N
+          security_id_source: RIC
+          spinoff_ratio: 0.72619206
+          unique_reference: xyz123
+        items:
+          $ref: '#/definitions/SpinOffPayload'
+        type: array
+      stock_split:
+        description: Stock Split.
+        example:
+        - description: 'Stock Split IBM  2:1 '
+          event_timestamp: 2016-07-03 01:00:00
+          ex_date: 2016-08-08
+          params: '{"security_id": "12312312345"}'
+          record_date: 2016-08-05
+          security_id: IBM.N
+          security_id_source: RIC
+          split_ratio: 0.059567068
+          unique_reference: xyz123
+        items:
+          $ref: '#/definitions/StockSplitPayload'
+        type: array
+    title: CorporateActionPayload
+    type: object
+  DividendPayload:
+    example:
+      book_name: Systematic Event
+      description: Dividend received
+      event_timestamp: 2016-07-03 01:00:00
+      fx_rate: 0.06888432
+      net_amount_book_ccy: 0.25313693
+      net_amount_local_ccy: 0.7545173
+      params: '{"Counterparty": "New Edge"}'
+      security_id: IBM.N
+      security_id_source: RIC
+      tag: None
+      unique_reference: xyz123
+    properties:
+      book_name:
+        example: Systematic Event
+        minLength: 2
+        type: string
+      description:
+        default: No description supplied
+        description: Describes cash event.
+        example: Dividend received
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      fx_rate:
+        description: FX rate = book amount per local amount
+        example: 0.06888432
+        format: double
+        type: number
+      net_amount_book_ccy:
+        example: 0.25313693
+        format: double
+        type: number
+      net_amount_local_ccy:
+        example: 0.7545173
+        format: double
+        type: number
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this cash event.
+        example: '{"Counterparty": "New Edge"}'
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      tag:
+        default: None
+        example: None
+        type: string
+      unique_reference:
+        default: No description supplied
+        description: Unique Corporate Action Reference
+        example: xyz123
+        type: string
+    required:
+    - security_id
+    - book_name
+    - event_timestamp
+    - net_amount_book_ccy
+    - net_amount_local_ccy
+    title: DividendPayload
+    type: object
+  Execution:
+    description: Execution media type (default view)
+    example:
+      avg_price: 0.24374607
+      broker_exec_datetime: Laborum modi culpa est deserunt.
+      broker_exec_id: Doloribus dolores quam sit dolore libero.
+      broker_order_id: Dolorem qui facere cumque.
+      create_datetime: Aspernatur odit aliquid.
+      cum_quantity: 0.3413131
+      exec_broker: Et laborum hic voluptates officia consectetur minima.
+      exec_type: TRADE_CANCEL
+      execution_id: 4.3160367e+18
+      lastmkt: Aperiam esse voluptatem voluptates corrupti.
+      order_id: 6.5985244e+18
+      order_status: STOPPED
+      prev_broker_exec_id: Odit sint assumenda occaecati odio voluptas.
+      price: 0.6848222
+      quantity: 0.89033926
+      text: Explicabo aut.
+      version: 3.496866e+18
+    properties:
+      avg_price:
+        description: Cumulative filled average price
+        example: 0.24374607
+        format: double
+        type: number
+      broker_exec_datetime:
+        description: Broker execution timestamp
+        example: Laborum modi culpa est deserunt.
+        type: string
+      broker_exec_id:
+        description: Broker execution sequence ident
+        example: Doloribus dolores quam sit dolore libero.
+        type: string
+      broker_order_id:
+        description: Broker order ident
+        example: Dolorem qui facere cumque.
+        type: string
+      create_datetime:
+        description: Execution transaction timestamp
+        example: Aspernatur odit aliquid.
+        type: string
+      cum_quantity:
+        description: Cumulative filled quantity
+        example: 0.3413131
+        format: double
+        type: number
+      exec_broker:
+        description: execution borker
+        example: Et laborum hic voluptates officia consectetur minima.
+        type: string
+      exec_type:
+        description: Execution message type
+        enum:
+        - NEW
+        - PARTIAL_FILL
+        - FILL
+        - DONE_FOR_DAY
+        - CANCELED
+        - REPLACE
+        - PENDING_CANCEL
+        - STOPPED
+        - REJECTED
+        - SUSPENDED
+        - PENDING_NEW
+        - CALCULATED
+        - EXPIRED
+        - RESTATED
+        - PENDING_REPLACE
+        - TRADE
+        - TRADE_CORRECT
+        - TRADE_CANCEL
+        - ORDER_STATUS
+        example: TRADE_CANCEL
+        type: string
+      execution_id:
+        description: Execution ID
+        example: 4.3160367e+18
+        format: int64
+        type: integer
+      lastmkt:
+        description: last execution market
+        example: Aperiam esse voluptatem voluptates corrupti.
+        type: string
+      order_id:
+        description: Order internal ident
+        example: 6.5985244e+18
+        format: int64
+        type: integer
+      order_status:
+        description: Executing order status
+        enum:
+        - NEW
+        - PARTIALLY_FILLED
+        - FILLED
+        - DONE_FOR_DAY
+        - CANCELLED
+        - REPLACED
+        - PENDING_CANCEL
+        - STOPPED
+        - REJECTED
+        - SUSPENDED
+        - PENDING_NEW
+        - CALCULATED
+        - EXPIRED
+        - ACCEPTED_FOR_BIDDING
+        - PENDING_REPLACE
+        - ORDER_RECEIVED
+        - ORDER_SENT
+        - MC_ACK_ORDER
+        - MC_SENT_ORDER
+        - CANCEL_RECEIVED
+        - CANCEL_SENT
+        - MC_ACK_CANCEL
+        - MC_SENT_CANCEL
+        - REPLACE_RECEIVED
+        - REPLACE_SENT
+        - MC_ACK_REPLACE
+        - MC_SENT_REPLACE
+        - EXECUTION_REPLACED
+        - EXECUTION_CANCELLED
+        - BOOKABLE
+        - BOOKING
+        - BOOKED
+        - NOTHING_DONE
+        - VALIDATION_ERROR
+        example: STOPPED
+        type: string
+      prev_broker_exec_id:
+        description: Previous execution id, usually replacing/correction
+        example: Odit sint assumenda occaecati odio voluptas.
+        type: string
+      price:
+        description: Filled price
+        example: 0.6848222
+        format: double
+        type: number
+      quantity:
+        description: Filled quantity
+        example: 0.89033926
+        format: double
+        type: number
+      text:
+        description: Execution text
+        example: Explicabo aut.
+        type: string
+      version:
+        description: Order version
+        example: 3.496866e+18
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.execution+json; view=default'
+    type: object
+  ExecutionCollection:
+    description: ExecutionCollection is the media type for an array of Execution (default
+      view)
+    example:
+    - avg_price: 0.24374607
+      broker_exec_datetime: Laborum modi culpa est deserunt.
+      broker_exec_id: Doloribus dolores quam sit dolore libero.
+      broker_order_id: Dolorem qui facere cumque.
+      create_datetime: Aspernatur odit aliquid.
+      cum_quantity: 0.3413131
+      exec_broker: Et laborum hic voluptates officia consectetur minima.
+      exec_type: TRADE_CANCEL
+      execution_id: 4.3160367e+18
+      lastmkt: Aperiam esse voluptatem voluptates corrupti.
+      order_id: 6.5985244e+18
+      order_status: STOPPED
+      prev_broker_exec_id: Odit sint assumenda occaecati odio voluptas.
+      price: 0.6848222
+      quantity: 0.89033926
+      text: Explicabo aut.
+      version: 3.496866e+18
+    items:
+      $ref: '#/definitions/Execution'
+    title: 'Mediatype identifier: application/vnd.execution+json; type=collection;
+      view=default'
+    type: array
+  FindAccountPayload:
+    example:
+      external_id: Neque explicabo temporibus.
+      instrument_id: 9.178268e+18
+    properties:
+      external_id:
+        description: External instrument ident.
+        example: Neque explicabo temporibus.
+        type: string
+      instrument_id:
+        description: Internal instrument ident.
+        example: 9.178268e+18
+        format: int64
+        type: integer
+    title: FindAccountPayload
+    type: object
+  Fund:
+    description: Fund media type (default view)
+    example:
+      books:
+      - book_id: 8.6632374e+18
+        book_name: Perferendis voluptas qui possimus qui voluptas.
+        rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+      - book_id: 8.6632374e+18
+        book_name: Perferendis voluptas qui possimus qui voluptas.
+        rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+      ccy: Voluptatem sed sapiente odio.
+      fund_id: 5.808043e+18
+      fund_name: Dignissimos odio et explicabo eveniet unde et.
+      instrument_id: 3.3726813e+18
+      organisation_id: 6.6483807e+18
+      organisation_name: Laboriosam minima recusandae dolorum sequi dolore.
+    properties:
+      books:
+        example:
+        - book_id: 8.6632374e+18
+          book_name: Perferendis voluptas qui possimus qui voluptas.
+          rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+        - book_id: 8.6632374e+18
+          book_name: Perferendis voluptas qui possimus qui voluptas.
+          rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+        items:
+          $ref: '#/definitions/Book'
+        type: array
+      ccy:
+        example: Voluptatem sed sapiente odio.
+        type: string
+      fund_id:
+        example: 5.808043e+18
+        format: int64
+        type: integer
+      fund_name:
+        example: Dignissimos odio et explicabo eveniet unde et.
+        type: string
+      instrument_id:
+        example: 3.3726813e+18
+        format: int64
+        type: integer
+      organisation_id:
+        example: 6.6483807e+18
+        format: int64
+        type: integer
+      organisation_name:
+        example: Laboriosam minima recusandae dolorum sequi dolore.
+        type: string
+    title: 'Mediatype identifier: application/vnd.fund+json; view=default'
+    type: object
+  FundCollection:
+    description: FundCollection is the media type for an array of Fund (default view)
+    example:
+    - books:
+      - book_id: 8.6632374e+18
+        book_name: Perferendis voluptas qui possimus qui voluptas.
+        rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+      - book_id: 8.6632374e+18
+        book_name: Perferendis voluptas qui possimus qui voluptas.
+        rollover_date: Nesciunt numquam rerum vel ut nesciunt.
+      ccy: Voluptatem sed sapiente odio.
+      fund_id: 5.808043e+18
+      fund_name: Dignissimos odio et explicabo eveniet unde et.
+      instrument_id: 3.3726813e+18
+      organisation_id: 6.6483807e+18
+      organisation_name: Laboriosam minima recusandae dolorum sequi dolore.
+    items:
+      $ref: '#/definitions/Fund'
+    title: 'Mediatype identifier: application/vnd.fund+json; type=collection; view=default'
+    type: array
+  IndicativeAvailablityPayload:
+    example:
+      available_stock:
+      - fee_bps: 0.9756747
+        quantity: 0.6584422
+        security_id: IBM.N
+        security_id_source: RIC
+      fund_name: DEMO_FUND
+      prime_broker_name: SG
+      timestamp: 2016-07-03 01:00:00
+    properties:
+      available_stock:
+        description: Dividends.
+        example:
+        - fee_bps: 0.9756747
+          quantity: 0.6584422
+          security_id: IBM.N
+          security_id_source: RIC
+        items:
+          $ref: '#/definitions/AvailableStockPayload'
+        type: array
+      fund_name:
+        example: DEMO_FUND
+        type: string
+      prime_broker_name:
+        example: SG
+        type: string
+      timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+    title: IndicativeAvailablityPayload
+    type: object
+  Instrument:
+    description: Instrument media type (default view)
+    example:
+      ccy: Ducimus et debitis.
+      definition:
+        Adipisci quo esse veritatis quis hic delectus.: 2007-03-16T13:37:34Z
+      description: Neque aut ut in suscipit saepe.
+      external_id: Cumque mollitia voluptate quaerat occaecati reiciendis temporibus.
+      instrument_id: 3.31531e+18
+      product_type: In quia suscipit sit nihil.
+      symbol: Mollitia atque autem.
+    properties:
+      ccy:
+        example: Ducimus et debitis.
+        type: string
+      definition:
+        additionalProperties: true
+        example:
+          Adipisci quo esse veritatis quis hic delectus.: 2007-03-16T13:37:34Z
+        type: object
+      description:
+        example: Neque aut ut in suscipit saepe.
+        type: string
+      external_id:
+        example: Cumque mollitia voluptate quaerat occaecati reiciendis temporibus.
+        type: string
+      instrument_id:
+        example: 3.31531e+18
+        format: int64
+        type: integer
+      product_type:
+        example: In quia suscipit sit nihil.
+        type: string
+      symbol:
+        example: Mollitia atque autem.
+        type: string
+    title: 'Mediatype identifier: application/vnd.instrument+json; view=default'
+    type: object
+  InstrumentSummary:
+    description: Instrument media type (summary view)
+    example:
+      description: Neque aut ut in suscipit saepe.
+      instrument_id: 3.31531e+18
+      product_type: In quia suscipit sit nihil.
+      symbol: Mollitia atque autem.
+    properties:
+      description:
+        example: Neque aut ut in suscipit saepe.
+        type: string
+      instrument_id:
+        example: 3.31531e+18
+        format: int64
+        type: integer
+      product_type:
+        example: In quia suscipit sit nihil.
+        type: string
+      symbol:
+        example: Mollitia atque autem.
+        type: string
+    title: 'Mediatype identifier: application/vnd.instrument+json; view=summary'
+    type: object
+  InstrumentSummaryCollection:
+    description: InstrumentSummaryCollection is the media type for an array of InstrumentSummary
+      (default view)
+    example:
+    - ccy: Ducimus et debitis.
+      definition:
+        Adipisci quo esse veritatis quis hic delectus.: 2007-03-16T13:37:34Z
+      description: Neque aut ut in suscipit saepe.
+      external_id: Cumque mollitia voluptate quaerat occaecati reiciendis temporibus.
+      instrument_id: 3.31531e+18
+      product_type: In quia suscipit sit nihil.
+      symbol: Mollitia atque autem.
+    - ccy: Ducimus et debitis.
+      definition:
+        Adipisci quo esse veritatis quis hic delectus.: 2007-03-16T13:37:34Z
+      description: Neque aut ut in suscipit saepe.
+      external_id: Cumque mollitia voluptate quaerat occaecati reiciendis temporibus.
+      instrument_id: 3.31531e+18
+      product_type: In quia suscipit sit nihil.
+      symbol: Mollitia atque autem.
+    - ccy: Ducimus et debitis.
+      definition:
+        Adipisci quo esse veritatis quis hic delectus.: 2007-03-16T13:37:34Z
+      description: Neque aut ut in suscipit saepe.
+      external_id: Cumque mollitia voluptate quaerat occaecati reiciendis temporibus.
+      instrument_id: 3.31531e+18
+      product_type: In quia suscipit sit nihil.
+      symbol: Mollitia atque autem.
+    items:
+      $ref: '#/definitions/InstrumentSummary'
+    title: 'Mediatype identifier: application/vnd.instrument+json; type=collection;
+      view=summary'
+    type: array
+  InterestPayload:
+    example:
+      accrued: true
+      amount_book_ccy: 0.49950752
+      amount_local_ccy: 0.8397192
+      book_name: Systematic Event
+      currency: USD
+      description: Long Financing
+      event_timestamp: 2016-07-03 01:00:00
+      fx_rate: 0.7269619
+      params: '{"Counterparty": "New Edge"}'
+      tag: None
+    properties:
+      accrued:
+        description: 'Book as Accrued (true) or real (false) '
+        example: true
+        type: boolean
+      amount_book_ccy:
+        description: signed amount +ve for recieved, -ve paid in fund currency
+        example: 0.49950752
+        format: double
+        type: number
+      amount_local_ccy:
+        description: signed amount +ve for recieved -ve paid in local currency
+        example: 0.8397192
+        format: double
+        type: number
+      book_name:
+        example: Systematic Event
+        minLength: 2
+        type: string
+      currency:
+        description: Amount Currency iso code
+        example: USD
+        type: string
+      description:
+        default: No Description supplied
+        description: Reason for interest.
+        example: Long Financing
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      fx_rate:
+        description: FX rate = book amount per local amount
+        example: 0.7269619
+        format: double
+        type: number
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this cash event.
+        example: '{"Counterparty": "New Edge"}'
+        type: string
+      tag:
+        default: None
+        example: None
+        type: string
+    required:
+    - book_name
+    - event_timestamp
+    - accrued
+    - currency
+    - amount_local_ccy
+    title: InterestPayload
+    type: object
+  Limit:
+    description: Limit media type (default view)
+    example:
+      enabled: false
+      limit_id: 2.2084469e+18
+      limit_master_id: 7.312939e+18
+      lower_bound: 0.019655071
+      name: Ex vero reprehenderit rem illo.
+      params:
+        Illo facere nam maxime officiis vel facere.: Deleniti nostrum.
+      upper_bound: 0.7637594
+    properties:
+      enabled:
+        example: false
+        type: boolean
+      limit_id:
+        example: 2.2084469e+18
+        format: int64
+        type: integer
+      limit_master_id:
+        example: 7.312939e+18
+        format: int64
+        type: integer
+      lower_bound:
+        example: 0.019655071
+        format: double
+        type: number
+      name:
+        example: Ex vero reprehenderit rem illo.
+        type: string
+      params:
+        additionalProperties: true
+        example:
+          Illo facere nam maxime officiis vel facere.: Deleniti nostrum.
+        type: object
+      upper_bound:
+        example: 0.7637594
+        format: double
+        type: number
+    title: 'Mediatype identifier: application/vnd.limit+json; view=default'
+    type: object
+  LimitCollection:
+    description: LimitCollection is the media type for an array of Limit (default
+      view)
+    example:
+    - enabled: false
+      limit_id: 2.2084469e+18
+      limit_master_id: 7.312939e+18
+      lower_bound: 0.019655071
+      name: Ex vero reprehenderit rem illo.
+      params:
+        Illo facere nam maxime officiis vel facere.: Deleniti nostrum.
+      upper_bound: 0.7637594
+    - enabled: false
+      limit_id: 2.2084469e+18
+      limit_master_id: 7.312939e+18
+      lower_bound: 0.019655071
+      name: Ex vero reprehenderit rem illo.
+      params:
+        Illo facere nam maxime officiis vel facere.: Deleniti nostrum.
+      upper_bound: 0.7637594
+    - enabled: false
+      limit_id: 2.2084469e+18
+      limit_master_id: 7.312939e+18
+      lower_bound: 0.019655071
+      name: Ex vero reprehenderit rem illo.
+      params:
+        Illo facere nam maxime officiis vel facere.: Deleniti nostrum.
+      upper_bound: 0.7637594
+    items:
+      $ref: '#/definitions/Limit'
+    title: 'Mediatype identifier: application/vnd.limit+json; type=collection; view=default'
+    type: array
+  LimitPayload:
+    example:
+      enabled: false
+      limit_master_id: 1
+      lower_bound: 0
+      name: New Limit
+      params:
+        Adipisci quod consequuntur qui facere aut.: Molestias cum est sed.
+      upper_bound: 10000
+    properties:
+      enabled:
+        example: false
+        type: boolean
+      limit_master_id:
+        description: Specifies master Trading limit type id.
+        example: 1
+        format: int64
+        type: integer
+      lower_bound:
+        description: Limits lower bound.
+        example: 0
+        format: double
+        type: number
+      name:
+        default: New Limit
+        description: Specifies a unique Trading limit name.
+        example: New Limit
+        type: string
+      params:
+        additionalProperties: true
+        description: A JSON list of parameters for this Trading limit type. One pair
+          for each parameter listed for the Master Trading Limit definition.
+        example:
+          Adipisci quod consequuntur qui facere aut.: Molestias cum est sed.
+        type: object
+      upper_bound:
+        description: Limits upper bound.
+        example: 10000
+        format: double
+        type: number
+    required:
+    - name
+    - limit_master_id
+    - lower_bound
+    - upper_bound
+    - params
+    title: LimitPayload
+    type: object
+  Masterlimit:
+    description: Masterlimit media type (default view)
+    example:
+      constraint_name: Voluptatem id.
+      description: Quia veniam voluptas veritatis vel.
+      limit_master_id: 3.2646688e+18
+      params:
+      - Aut cupiditate modi mollitia voluptatibus.
+    properties:
+      constraint_name:
+        example: Voluptatem id.
+        type: string
+      description:
+        example: Quia veniam voluptas veritatis vel.
+        type: string
+      limit_master_id:
+        example: 3.2646688e+18
+        format: int64
+        type: integer
+      params:
+        example:
+        - Aut cupiditate modi mollitia voluptatibus.
+        items:
+          example: Aut cupiditate modi mollitia voluptatibus.
+          type: string
+        type: array
+    title: 'Mediatype identifier: application/vnd.masterlimit+json; view=default'
+    type: object
+  MasterlimitCollection:
+    description: MasterlimitCollection is the media type for an array of Masterlimit
+      (default view)
+    example:
+    - constraint_name: Voluptatem id.
+      description: Quia veniam voluptas veritatis vel.
+      limit_master_id: 3.2646688e+18
+      params:
+      - Aut cupiditate modi mollitia voluptatibus.
+    items:
+      $ref: '#/definitions/Masterlimit'
+    title: 'Mediatype identifier: application/vnd.masterlimit+json; type=collection;
+      view=default'
+    type: array
+  Order:
+    description: Order media type (default view)
+    example:
+      account_id: 6.8610785e+18
+      algo:
+        Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+      allocations:
+      - allocation_id: 4.811911e+18
+        book_name: Accusantium iste facere molestiae ex tempora.
+        order_id: 1.7188133e+18
+        position_key: 1.5275714e+18
+        quantity: 0.7825839
+        tag: Accusamus ipsa ipsa enim.
+      clOrdId: upe
+      create_datetime: Consequatur quia.
+      filled_avg_price: 0.89063513
+      filled_quantity: 0.234665
+      handl_inst: MANUAL_ORDER
+      instrument:
+        Dolor deleniti nesciunt.: 1999-12-06T23:18:13Z
+      is_booked: true
+      is_complete: false
+      limit_price: 0.070535146
+      market_connector: Sint et necessitatibus sunt facere.
+      order_id: 5.813053e+18
+      order_status: Et velit eum ex eaque pariatur.
+      order_type: LIMIT_ON_CLOSE
+      props:
+        Quam unde aliquam occaecati autem nesciunt.: 2015-02-04T13:12:07Z
+      quantity: 0.30420315
+      side: SELL_SHORT
+      source: Rerum eligendi est quos accusamus enim.
+      submit_datetime: Non occaecati impedit quidem.
+      symbol: Illum tenetur qui et voluptatem possimus sit.
+      text: buy low sell high
+      timeinforce: DAY
+      trader: Rerum ducimus at cumque suscipit ut.
+      trader_id: 7.983146e+18
+      version: 1.4902268e+18
+    properties:
+      account_id:
+        description: Account Id, ignored if [account] is set.
+        example: 6.8610785e+18
+        format: int64
+        type: integer
+      algo:
+        additionalProperties: true
+        description: Optional order algorithm FIX tags.
+        example:
+          Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+        type: object
+      allocations:
+        description: Allocations.
+        example:
+        - allocation_id: 4.811911e+18
+          book_name: Accusantium iste facere molestiae ex tempora.
+          order_id: 1.7188133e+18
+          position_key: 1.5275714e+18
+          quantity: 0.7825839
+          tag: Accusamus ipsa ipsa enim.
+        items:
+          $ref: '#/definitions/Allocation'
+        type: array
+      clOrdId:
+        description: |-
+          Unique client order ID.
+          To generate a clOrdId, consider setting a prefix, and incrementing a counter or generating a UUID.
+          Some UUIDs are longer than 36 characters, so use a url-safe base64 encoding.
+          For example, the prefix 'treo_' and the UUID '2363946B-329B-E297-C94B-A82924CF3380' creates 'treo_2363946B329BE297C94BA82924CF3380'.
+        example: upe
+        minLength: 1
+        type: string
+      create_datetime:
+        description: Order created timestamp
+        example: Consequatur quia.
+        type: string
+      filled_avg_price:
+        description: Order filled average price
+        example: 0.89063513
+        format: double
+        type: number
+      filled_quantity:
+        description: Order filled quantity
+        example: 0.234665
+        format: double
+        type: number
+      handl_inst:
+        default: AUTOMATED_EXECUTION_ORDER_PRIVATE
+        description: Instructions for order handling on Broker trading floor. Default
+          to Automated execution order, private, no Broker intervention.
+        enum:
+        - AUTOMATED_EXECUTION_ORDER_PRIVATE
+        - AUTOMATED_EXECUTION_ORDER_PUBLIC
+        - MANUAL_ORDER
+        example: MANUAL_ORDER
+        type: string
+      instrument:
+        additionalProperties: true
+        description: Instrument payload
+        example:
+          Dolor deleniti nesciunt.: 1999-12-06T23:18:13Z
+        type: object
+      is_booked:
+        description: Order booked flag
+        example: true
+        type: boolean
+      is_complete:
+        description: Order complete flag
+        example: false
+        type: boolean
+      limit_price:
+        description: Optional limit price for 'Limit', 'StopLimit', and 'LimitIfTouched'
+          orders.
+        example: 0.070535146
+        format: double
+        type: number
+      market_connector:
+        description: Market Connector Code, ignored if [account] is set.
+        example: Sint et necessitatibus sunt facere.
+        type: string
+      order_id:
+        description: Order ID
+        example: 5.813053e+18
+        format: int64
+        type: integer
+      order_status:
+        description: Order Status
+        example: Et velit eum ex eaque pariatur.
+        type: string
+      order_type:
+        default: LIMIT
+        description: Order type.
+        enum:
+        - MARKET
+        - LIMIT
+        - STOP
+        - STOP_LIMIT
+        - MARKET_ON_CLOSE
+        - WITH_OR_WITHOUT
+        - LIMIT_OR_BETTER
+        - LIMIT_WITH_OR_WITHOUT
+        - ON_BASIS
+        - ON_CLOSE
+        - LIMIT_ON_CLOSE
+        - FOREX_MARKET
+        - PREVIOUSLY_QUOTED
+        - PREVIOUSLY_INDICATED
+        - FOREX_LIMIT
+        - FOREX_SWAP
+        - FOREX_PREVIOUSLY_QUOTED
+        - FUNARI
+        - MARKET_IF_TOUCHED
+        - MARKET_WITH_LEFTOVER_AS_LIMIT
+        - PREVIOUS_FUND_VALUATION_POINT
+        - NEXT_FUND_VALUATION_POINT
+        - PEGGED
+        example: LIMIT_ON_CLOSE
+        type: string
+      props:
+        additionalProperties: true
+        description: Extra properties
+        example:
+          Quam unde aliquam occaecati autem nesciunt.: 2015-02-04T13:12:07Z
+        type: object
+      quantity:
+        description: Order quantity in units of the underlying instrument.
+        example: 0.30420315
+        format: double
+        type: number
+      side:
+        description: Order side.
+        enum:
+        - BUY
+        - SELL
+        - BUY_MINUS
+        - SELL_PLUS
+        - SELL_SHORT
+        - SELL_SHORT_EXEMPT
+        - UNDISCLOSED
+        - CROSS
+        - CROSS_SHORT
+        - CROSS_SHORT_EXEMPT
+        - AS_DEFINED
+        - OPPOSITE
+        - SUBSCRIBE
+        - REDEEM
+        - LEND
+        - BORROW
+        example: SELL_SHORT
+        type: string
+      source:
+        description: Source application
+        example: Rerum eligendi est quos accusamus enim.
+        type: string
+      submit_datetime:
+        description: Order last transaction timestamp
+        example: Non occaecati impedit quidem.
+        type: string
+      symbol:
+        description: Security Symbol.
+        example: Illum tenetur qui et voluptatem possimus sit.
+        type: string
+      text:
+        description: Optional order annotation.
+        example: buy low sell high
+        type: string
+      timeinforce:
+        default: DAY
+        description: Specifies how long the order remains in effect. Absence of this
+          field is interpreted as DAY.
+        enum:
+        - DAY
+        - GOOD_TILL_CANCEL
+        - AT_THE_OPENING
+        - IMMEDIATE_OR_CANCEL
+        - FILL_OR_KILL
+        - GOOD_TILL_CROSSING
+        - GOOD_TILL_DATE
+        - AT_THE_CLOSE
+        example: DAY
+        type: string
+      trader:
+        description: Trader Name
+        example: Rerum ducimus at cumque suscipit ut.
+        type: string
+      trader_id:
+        description: Trader Id
+        example: 7.983146e+18
+        format: int64
+        type: integer
+      version:
+        description: Last known good order version
+        example: 1.4902268e+18
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.order+json; view=default'
+    type: object
+  OrderCollection:
+    description: OrderCollection is the media type for an array of Order (default
+      view)
+    example:
+    - account_id: 6.8610785e+18
+      algo:
+        Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+      allocations:
+      - allocation_id: 4.811911e+18
+        book_name: Accusantium iste facere molestiae ex tempora.
+        order_id: 1.7188133e+18
+        position_key: 1.5275714e+18
+        quantity: 0.7825839
+        tag: Accusamus ipsa ipsa enim.
+      clOrdId: upe
+      create_datetime: Consequatur quia.
+      filled_avg_price: 0.89063513
+      filled_quantity: 0.234665
+      handl_inst: MANUAL_ORDER
+      instrument:
+        Dolor deleniti nesciunt.: 1999-12-06T23:18:13Z
+      is_booked: true
+      is_complete: false
+      limit_price: 0.070535146
+      market_connector: Sint et necessitatibus sunt facere.
+      order_id: 5.813053e+18
+      order_status: Et velit eum ex eaque pariatur.
+      order_type: LIMIT_ON_CLOSE
+      props:
+        Quam unde aliquam occaecati autem nesciunt.: 2015-02-04T13:12:07Z
+      quantity: 0.30420315
+      side: SELL_SHORT
+      source: Rerum eligendi est quos accusamus enim.
+      submit_datetime: Non occaecati impedit quidem.
+      symbol: Illum tenetur qui et voluptatem possimus sit.
+      text: buy low sell high
+      timeinforce: DAY
+      trader: Rerum ducimus at cumque suscipit ut.
+      trader_id: 7.983146e+18
+      version: 1.4902268e+18
+    items:
+      $ref: '#/definitions/Order'
+    title: 'Mediatype identifier: application/vnd.order+json; type=collection; view=default'
+    type: array
+  OrderPayload:
+    example:
+      account: SIM_ACC
+      account_id: 1.161575e+18
+      algo:
+        Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+      allocations:
+      - book_name: Systematic Event
+        quantity: 0.8371804
+        tag: None
+      clOrdId: p
+      handl_inst: MANUAL_ORDER
+      limit_price: 0.15555583
+      market_connector: Ullam itaque consectetur.
+      max_floor: 8.3692725e+18
+      order_type: LIMIT_OR_BETTER
+      quantity: 0.19066131
+      security_id: IBM.N
+      security_id_source: RIC
+      side: BUY_MINUS
+      suppress_trade_check: false
+      text: buy low sell high
+      timeinforce: FILL_OR_KILL
+    properties:
+      account:
+        description: Account code, look up by GET /account
+        example: SIM_ACC
+        type: string
+      account_id:
+        description: Account Id, ignored if [account] is set.
+        example: 1.161575e+18
+        format: int64
+        type: integer
+      algo:
+        additionalProperties: true
+        description: Optional order algorithm FIX tags.
+        example:
+          Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+        type: object
+      allocations:
+        description: Allocations.
+        example:
+        - book_name: Systematic Event
+          quantity: 0.8371804
+          tag: None
+        items:
+          $ref: '#/definitions/AllocationPayload'
+        type: array
+      clOrdId:
+        description: |-
+          Unique client order ID.
+          To generate a clOrdId, consider setting a prefix, and incrementing a counter or generating a UUID.
+          Some UUIDs are longer than 36 characters, so use a url-safe base64 encoding.
+          For example, the prefix 'treo_' and the UUID '2363946B-329B-E297-C94B-A82924CF3380' creates 'treo_2363946B329BE297C94BA82924CF3380'.
+        example: p
+        minLength: 1
+        type: string
+      handl_inst:
+        default: AUTOMATED_EXECUTION_ORDER_PRIVATE
+        description: Instructions for order handling on Broker trading floor. Default
+          to Automated execution order, private, no Broker intervention.
+        enum:
+        - AUTOMATED_EXECUTION_ORDER_PRIVATE
+        - AUTOMATED_EXECUTION_ORDER_PUBLIC
+        - MANUAL_ORDER
+        example: MANUAL_ORDER
+        type: string
+      limit_price:
+        description: Optional limit price for 'Limit', 'StopLimit', and 'LimitIfTouched'
+          orders.
+        example: 0.15555583
+        format: double
+        type: number
+      market_connector:
+        description: Market Connector Code, ignored if [account] is set.
+        example: Ullam itaque consectetur.
+        type: string
+      max_floor:
+        description: Optional, the quantity to be displayed (FIX tag 111).
+        example: 8.3692725e+18
+        format: int64
+        type: integer
+      order_type:
+        default: LIMIT
+        description: Order type.
+        enum:
+        - MARKET
+        - LIMIT
+        - STOP
+        - STOP_LIMIT
+        - MARKET_ON_CLOSE
+        - WITH_OR_WITHOUT
+        - LIMIT_OR_BETTER
+        - LIMIT_WITH_OR_WITHOUT
+        - ON_BASIS
+        - ON_CLOSE
+        - LIMIT_ON_CLOSE
+        - FOREX_MARKET
+        - PREVIOUSLY_QUOTED
+        - PREVIOUSLY_INDICATED
+        - FOREX_LIMIT
+        - FOREX_SWAP
+        - FOREX_PREVIOUSLY_QUOTED
+        - FUNARI
+        - MARKET_IF_TOUCHED
+        - MARKET_WITH_LEFTOVER_AS_LIMIT
+        - PREVIOUS_FUND_VALUATION_POINT
+        - NEXT_FUND_VALUATION_POINT
+        - PEGGED
+        example: LIMIT_OR_BETTER
+        type: string
+      quantity:
+        description: Order quantity in units of the underlying instrument.
+        example: 0.19066131
+        format: double
+        type: number
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      side:
+        description: Order side.
+        enum:
+        - BUY
+        - SELL
+        - BUY_MINUS
+        - SELL_PLUS
+        - SELL_SHORT
+        - SELL_SHORT_EXEMPT
+        - UNDISCLOSED
+        - CROSS
+        - CROSS_SHORT
+        - CROSS_SHORT_EXEMPT
+        - AS_DEFINED
+        - OPPOSITE
+        - SUBSCRIBE
+        - REDEEM
+        - LEND
+        - BORROW
+        example: BUY_MINUS
+        type: string
+      suppress_trade_check:
+        description: By default, new order request checks for trade limit rules. Set
+          this flag to true to turn off checks.
+        example: false
+        type: boolean
+      text:
+        description: Optional order annotation.
+        example: buy low sell high
+        type: string
+      timeinforce:
+        default: DAY
+        description: Specifies how long the order remains in effect. Absence of this
+          field is interpreted as DAY.
+        enum:
+        - DAY
+        - GOOD_TILL_CANCEL
+        - AT_THE_OPENING
+        - IMMEDIATE_OR_CANCEL
+        - FILL_OR_KILL
+        - GOOD_TILL_CROSSING
+        - GOOD_TILL_DATE
+        - AT_THE_CLOSE
+        example: FILL_OR_KILL
+        type: string
+    required:
+    - security_id
+    - side
+    - quantity
+    - account
+    title: OrderPayload
+    type: object
+  Position:
+    description: Position Entity (default view)
+    example:
+      account_name: Repellendus assumenda possimus non et explicabo qui.
+      book_ccy: Quos et atque neque.
+      book_name: Rerum non dolore.
+      buy_cost: 0.80905783
+      buy_cost_bk_ccy: 0.64485395
+      buy_quantity: 0.53251904
+      ccy: Quibusdam alias ea dolor.
+      current_cost: 0.6741833
+      current_price: 0.08302732
+      current_quantity: 0.35286877
+      current_unit_cost: 0.9061024
+      external_id: Magni culpa.
+      fund_name: Tempora non placeat.
+      instrument_description: Laborum officiis nihil nemo itaque quasi.
+      instrument_id: 1.0420066e+18
+      position_date: 2008-08-13T08:14:19+01:00
+      position_key: 3.7727578e+18
+      product_type: Adipisci aperiam velit sint vel cupiditate.
+      sell_cost: 0.63453394
+      sell_cost_bk_ccy: 0.9984951
+      sell_quantity: 0.29170287
+      symbol: Excepturi dolorum ad nemo vero.
+      tag: Esse et quis.
+    properties:
+      account_name:
+        example: Repellendus assumenda possimus non et explicabo qui.
+        type: string
+      book_ccy:
+        example: Quos et atque neque.
+        type: string
+      book_name:
+        example: Rerum non dolore.
+        type: string
+      buy_cost:
+        example: 0.80905783
+        format: double
+        type: number
+      buy_cost_bk_ccy:
+        example: 0.64485395
+        format: double
+        type: number
+      buy_quantity:
+        example: 0.53251904
+        format: double
+        type: number
+      ccy:
+        example: Quibusdam alias ea dolor.
+        type: string
+      current_cost:
+        example: 0.6741833
+        format: double
+        type: number
+      current_price:
+        example: 0.08302732
+        format: double
+        type: number
+      current_quantity:
+        example: 0.35286877
+        format: double
+        type: number
+      current_unit_cost:
+        example: 0.9061024
+        format: double
+        type: number
+      external_id:
+        example: Magni culpa.
+        type: string
+      fund_name:
+        example: Tempora non placeat.
+        type: string
+      instrument_description:
+        example: Laborum officiis nihil nemo itaque quasi.
+        type: string
+      instrument_id:
+        example: 1.0420066e+18
+        format: int64
+        type: integer
+      position_date:
+        example: 2008-08-13T08:14:19+01:00
+        format: date-time
+        type: string
+      position_key:
+        example: 3.7727578e+18
+        format: int64
+        type: integer
+      product_type:
+        example: Adipisci aperiam velit sint vel cupiditate.
+        type: string
+      sell_cost:
+        example: 0.63453394
+        format: double
+        type: number
+      sell_cost_bk_ccy:
+        example: 0.9984951
+        format: double
+        type: number
+      sell_quantity:
+        example: 0.29170287
+        format: double
+        type: number
+      symbol:
+        example: Excepturi dolorum ad nemo vero.
+        type: string
+      tag:
+        example: Esse et quis.
+        type: string
+    title: 'Mediatype identifier: application/vnd.position+json; view=default'
+    type: object
+  PositionCollection:
+    description: PositionCollection is the media type for an array of Position (default
+      view)
+    example:
+    - account_name: Repellendus assumenda possimus non et explicabo qui.
+      book_ccy: Quos et atque neque.
+      book_name: Rerum non dolore.
+      buy_cost: 0.80905783
+      buy_cost_bk_ccy: 0.64485395
+      buy_quantity: 0.53251904
+      ccy: Quibusdam alias ea dolor.
+      current_cost: 0.6741833
+      current_price: 0.08302732
+      current_quantity: 0.35286877
+      current_unit_cost: 0.9061024
+      external_id: Magni culpa.
+      fund_name: Tempora non placeat.
+      instrument_description: Laborum officiis nihil nemo itaque quasi.
+      instrument_id: 1.0420066e+18
+      position_date: 2008-08-13T08:14:19+01:00
+      position_key: 3.7727578e+18
+      product_type: Adipisci aperiam velit sint vel cupiditate.
+      sell_cost: 0.63453394
+      sell_cost_bk_ccy: 0.9984951
+      sell_quantity: 0.29170287
+      symbol: Excepturi dolorum ad nemo vero.
+      tag: Esse et quis.
+    items:
+      $ref: '#/definitions/Position'
+    title: 'Mediatype identifier: application/vnd.position+json; type=collection;
+      view=default'
+    type: array
+  Quote:
+    description: Quote media type (default view)
+    example:
+      ask: 0.7943418
+      ask_size: 3.9213994e+18
+      ask1: 0.5645247
+      ask1_size: 8.8680995e+18
+      ask2: 0.12008182
+      ask2_size: 7.5772234e+18
+      ask3: 0.13601255
+      ask3_size: 7.181535e+18
+      ask4: 0.14891857
+      ask4_size: 7.998806e+18
+      ask5: 0.9115842
+      ask5_size: 4.3754186e+18
+      bid: 0.6540887
+      bid_size: 9.2130025e+18
+      bid1: 0.67499787
+      bid1_size: 7.020105e+17
+      bid2: 0.7580641
+      bid2_size: 3.104402e+18
+      bid3: 0.577559
+      bid3_size: 3.0861474e+18
+      bid4: 0.98241466
+      bid4_size: 5.753913e+18
+      bid5: 0.21484934
+      bid5_size: 7.742957e+18
+      close: 0.020361366
+      country: Eligendi dolores et dolores.
+      crncy: Et quia enim.
+      cusip: Enim aut eaque et in.
+      description: Quam ullam consequuntur rem.
+      exch_code: Ipsum ex molestiae omnis reiciendis dolore.
+      expiry: Hic sit ducimus enim a laboriosam tempore.
+      halt_rsn: Animi expedita distinctio quaerat.
+      high: 0.76023245
+      industry: Quidem et beatae inventore.
+      isin: Est inventore.
+      last_datetime: Et earum quibusdam est.
+      last_price: 0.73519516
+      low: 0.010071872
+      multiplier: 0.3697063
+      open: 0.4549779
+      prim_exch: Aliquid voluptate est.
+      px_trade_lot_size: 0.16841085
+      round_lot: 0.32060367
+      sector: Saepe tempora impedit.
+      sedol: Recusandae et numquam eum.
+      sh_sal_res: Ut provident sed non voluptatem possimus.
+      size_last_trade: 3.4861226e+18
+      sub_industry: Cumque quis consequatur asperiores.
+      symbol: Tempora sunt nobis.
+      symbol_root: Illum dolorem ratione et neque.
+      tick_size: 0.70604473
+      trd_status: Soluta illum doloribus consectetur.
+      volume: 8.3869944e+18
+    properties:
+      ask:
+        example: 0.7943418
+        format: double
+        type: number
+      ask_size:
+        example: 3.9213994e+18
+        format: int64
+        type: integer
+      ask1:
+        example: 0.5645247
+        format: double
+        type: number
+      ask1_size:
+        example: 8.8680995e+18
+        format: int64
+        type: integer
+      ask2:
+        example: 0.12008182
+        format: double
+        type: number
+      ask2_size:
+        example: 7.5772234e+18
+        format: int64
+        type: integer
+      ask3:
+        example: 0.13601255
+        format: double
+        type: number
+      ask3_size:
+        example: 7.181535e+18
+        format: int64
+        type: integer
+      ask4:
+        example: 0.14891857
+        format: double
+        type: number
+      ask4_size:
+        example: 7.998806e+18
+        format: int64
+        type: integer
+      ask5:
+        example: 0.9115842
+        format: double
+        type: number
+      ask5_size:
+        example: 4.3754186e+18
+        format: int64
+        type: integer
+      bid:
+        example: 0.6540887
+        format: double
+        type: number
+      bid_size:
+        example: 9.2130025e+18
+        format: int64
+        type: integer
+      bid1:
+        example: 0.67499787
+        format: double
+        type: number
+      bid1_size:
+        example: 7.020105e+17
+        format: int64
+        type: integer
+      bid2:
+        example: 0.7580641
+        format: double
+        type: number
+      bid2_size:
+        example: 3.104402e+18
+        format: int64
+        type: integer
+      bid3:
+        example: 0.577559
+        format: double
+        type: number
+      bid3_size:
+        example: 3.0861474e+18
+        format: int64
+        type: integer
+      bid4:
+        example: 0.98241466
+        format: double
+        type: number
+      bid4_size:
+        example: 5.753913e+18
+        format: int64
+        type: integer
+      bid5:
+        example: 0.21484934
+        format: double
+        type: number
+      bid5_size:
+        example: 7.742957e+18
+        format: int64
+        type: integer
+      close:
+        example: 0.020361366
+        format: double
+        type: number
+      country:
+        example: Eligendi dolores et dolores.
+        type: string
+      crncy:
+        example: Et quia enim.
+        type: string
+      cusip:
+        example: Enim aut eaque et in.
+        type: string
+      description:
+        example: Quam ullam consequuntur rem.
+        type: string
+      exch_code:
+        example: Ipsum ex molestiae omnis reiciendis dolore.
+        type: string
+      expiry:
+        example: Hic sit ducimus enim a laboriosam tempore.
+        type: string
+      halt_rsn:
+        example: Animi expedita distinctio quaerat.
+        type: string
+      high:
+        example: 0.76023245
+        format: double
+        type: number
+      industry:
+        example: Quidem et beatae inventore.
+        type: string
+      isin:
+        example: Est inventore.
+        type: string
+      last_datetime:
+        example: Et earum quibusdam est.
+        type: string
+      last_price:
+        example: 0.73519516
+        format: double
+        type: number
+      low:
+        example: 0.010071872
+        format: double
+        type: number
+      multiplier:
+        example: 0.3697063
+        format: double
+        type: number
+      open:
+        example: 0.4549779
+        format: double
+        type: number
+      prim_exch:
+        example: Aliquid voluptate est.
+        type: string
+      px_trade_lot_size:
+        example: 0.16841085
+        format: double
+        type: number
+      round_lot:
+        example: 0.32060367
+        format: double
+        type: number
+      sector:
+        example: Saepe tempora impedit.
+        type: string
+      sedol:
+        example: Recusandae et numquam eum.
+        type: string
+      sh_sal_res:
+        example: Ut provident sed non voluptatem possimus.
+        type: string
+      size_last_trade:
+        example: 3.4861226e+18
+        format: int64
+        type: integer
+      sub_industry:
+        example: Cumque quis consequatur asperiores.
+        type: string
+      symbol:
+        example: Tempora sunt nobis.
+        type: string
+      symbol_root:
+        example: Illum dolorem ratione et neque.
+        type: string
+      tick_size:
+        example: 0.70604473
+        format: double
+        type: number
+      trd_status:
+        example: Soluta illum doloribus consectetur.
+        type: string
+      volume:
+        example: 8.3869944e+18
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.quote+json; view=default'
+    type: object
+  ReplaceOrderOrderPayload:
+    example:
+      algo:
+        Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+      clOrdId: m
+      limit_price: 0.7743168
+      order_status: Sed voluptatem vel ducimus quis omnis fugit.
+      quantity: 0.60962653
+    properties:
+      algo:
+        additionalProperties: true
+        description: Optional order algorithm FIX tags.
+        example:
+          Molestias error quidem numquam.: Ut expedita est doloribus nihil porro.
+        type: object
+      clOrdId:
+        description: |-
+          Unique client order ID.
+          To generate a clOrdId, consider setting a prefix, and incrementing a counter or generating a UUID.
+          Some UUIDs are longer than 36 characters, so use a url-safe base64 encoding.
+          For example, the prefix 'treo_' and the UUID '2363946B-329B-E297-C94B-A82924CF3380' creates 'treo_2363946B329BE297C94BA82924CF3380'.
+        example: m
+        minLength: 1
+        type: string
+      limit_price:
+        description: Optional limit price for 'Limit', 'StopLimit', and 'LimitIfTouched'
+          orders.
+        example: 0.7743168
+        format: double
+        type: number
+      order_status:
+        example: Sed voluptatem vel ducimus quis omnis fugit.
+        type: string
+      quantity:
+        description: Order quantity in units of the underlying instrument.
+        example: 0.60962653
+        format: double
+        type: number
+    required:
+    - clOrdId
+    title: ReplaceOrderOrderPayload
+    type: object
+  ResitctedInstrumentPayload:
+    example:
+      end_timestamp: 2017-01-25 13:00:00
+      fund_name: Any Fund
+      reason: Over the wall on merger talks
+      security_id: IBM.N
+      security_id_source: RIC
+      start_timestamp: 2017-01-20 01:00:00
+    properties:
+      end_timestamp:
+        description: The date and time when the resriction ends
+        example: 2017-01-25 13:00:00
+        type: string
+      fund_name:
+        description: Fund Name of fund that is restircted. Or 'Any Fund' to restrict
+          all funds
+        example: Any Fund
+        type: string
+      reason:
+        example: Over the wall on merger talks
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        example: RIC
+        type: string
+      start_timestamp:
+        description: The date and time when the resriction starts
+        example: 2017-01-20 01:00:00
+        type: string
+    required:
+    - security_id
+    - fund_name
+    - reason
+    - start_timestamp
+    - end_timestamp
+    title: ResitctedInstrumentPayload
+    type: object
+  Restricted:
+    description: Restricted media type (default view)
+    example:
+      effective_from: Debitis voluptatem dolores quam accusantium.
+      effective_to: Inventore sit ipsum dolor.
+      fund_name: Sed debitis.
+      instrument_description: Error expedita dicta suscipit aut.
+      restricted_list_id: 4.7903847e+18
+      restricted_reason: Ab repudiandae vitae architecto.
+      security_id: Tempore hic odit libero necessitatibus amet placeat.
+      symbol: Dolore quisquam et iste.
+    properties:
+      effective_from:
+        example: Debitis voluptatem dolores quam accusantium.
+        type: string
+      effective_to:
+        example: Inventore sit ipsum dolor.
+        type: string
+      fund_name:
+        example: Sed debitis.
+        type: string
+      instrument_description:
+        example: Error expedita dicta suscipit aut.
+        type: string
+      restricted_list_id:
+        example: 4.7903847e+18
+        format: int64
+        type: integer
+      restricted_reason:
+        example: Ab repudiandae vitae architecto.
+        type: string
+      security_id:
+        example: Tempore hic odit libero necessitatibus amet placeat.
+        type: string
+      symbol:
+        example: Dolore quisquam et iste.
+        type: string
+    title: 'Mediatype identifier: application/vnd.restricted+json; view=default'
+    type: object
+  RestrictedCollection:
+    description: RestrictedCollection is the media type for an array of Restricted
+      (default view)
+    example:
+    - effective_from: Debitis voluptatem dolores quam accusantium.
+      effective_to: Inventore sit ipsum dolor.
+      fund_name: Sed debitis.
+      instrument_description: Error expedita dicta suscipit aut.
+      restricted_list_id: 4.7903847e+18
+      restricted_reason: Ab repudiandae vitae architecto.
+      security_id: Tempore hic odit libero necessitatibus amet placeat.
+      symbol: Dolore quisquam et iste.
+    - effective_from: Debitis voluptatem dolores quam accusantium.
+      effective_to: Inventore sit ipsum dolor.
+      fund_name: Sed debitis.
+      instrument_description: Error expedita dicta suscipit aut.
+      restricted_list_id: 4.7903847e+18
+      restricted_reason: Ab repudiandae vitae architecto.
+      security_id: Tempore hic odit libero necessitatibus amet placeat.
+      symbol: Dolore quisquam et iste.
+    items:
+      $ref: '#/definitions/Restricted'
+    title: 'Mediatype identifier: application/vnd.restricted+json; type=collection;
+      view=default'
+    type: array
+  SpinOffPayload:
+    example:
+      description: 'Stock Split IBM  2:1 '
+      event_timestamp: 2016-07-03 01:00:00
+      ex_date: 2016-08-08
+      new_security_id: IBM.N
+      new_security_id_source: RIC
+      params: '{"security_id": "12312312345"}'
+      record_date: 2016-08-05
+      security_id: IBM.N
+      security_id_source: RIC
+      spinoff_ratio: 0.72619206
+      unique_reference: xyz123
+    properties:
+      description:
+        default: No description supplied
+        description: Describes Corporate Action
+        example: 'Stock Split IBM  2:1 '
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      ex_date:
+        example: 2016-08-08
+        type: string
+      new_security_id:
+        description: Spinoff Security Identification, refer to SecurityIdSource field,
+          e.g. '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      new_security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this Corporate Action
+        example: '{"security_id": "12312312345"}'
+        type: string
+      record_date:
+        example: 2016-08-05
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      spinoff_ratio:
+        description: Number of spin-off stock per 1 original stock.
+        example: 0.72619206
+        format: double
+        type: number
+      unique_reference:
+        default: No description supplied
+        description: Unique Corporate Action Reference
+        example: xyz123
+        type: string
+    required:
+    - security_id
+    - new_security_id
+    - ex_date
+    - spinoff_ratio
+    - event_timestamp
+    title: SpinOffPayload
+    type: object
+  StockLoanPayload:
+    example:
+      accrued: true
+      book_name: Systematic Event
+      description: Stock loan fees
+      event_timestamp: 2016-07-03 01:00:00
+      fee_book_ccy: 0.42461252
+      fee_local_ccy: 0.26743448
+      fx_rate: 0.39060384
+      params: '{"Stock loan rate": "2.3"}'
+      security_id: IBM.N
+      security_id_source: RIC
+      tag: None
+    properties:
+      accrued:
+        description: 'Book as Accrued (true) or real (false) '
+        example: true
+        type: boolean
+      book_name:
+        example: Systematic Event
+        minLength: 2
+        type: string
+      description:
+        default: No Description supplied
+        description: Reason.
+        example: Stock loan fees
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      fee_book_ccy:
+        description: signed amount +ve for recieved, -ve paid in fund currency
+        example: 0.42461252
+        format: double
+        type: number
+      fee_local_ccy:
+        description: signed amount +ve for recieved -ve paid in local currency
+        example: 0.26743448
+        format: double
+        type: number
+      fx_rate:
+        description: FX rate = book fee per local fee
+        example: 0.39060384
+        format: double
+        type: number
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this cash event.
+        example: '{"Stock loan rate": "2.3"}'
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      tag:
+        default: None
+        example: None
+        type: string
+    required:
+    - security_id
+    - book_name
+    - event_timestamp
+    - accrued
+    - fee_book_ccy
+    - fee_local_ccy
+    title: StockLoanPayload
+    type: object
+  StockSplitPayload:
+    example:
+      description: 'Stock Split IBM  2:1 '
+      event_timestamp: 2016-07-03 01:00:00
+      ex_date: 2016-08-08
+      params: '{"security_id": "12312312345"}'
+      record_date: 2016-08-05
+      security_id: IBM.N
+      security_id_source: RIC
+      split_ratio: 0.059567068
+      unique_reference: xyz123
+    properties:
+      description:
+        default: No description supplied
+        description: Describes Corporate Action
+        example: 'Stock Split IBM  2:1 '
+        type: string
+      event_timestamp:
+        example: 2016-07-03 01:00:00
+        type: string
+      ex_date:
+        example: 2016-08-08
+        type: string
+      params:
+        default: '{}'
+        description: A JSON list of parameters for this Corporate Action
+        example: '{"security_id": "12312312345"}'
+        type: string
+      record_date:
+        example: 2016-08-05
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - _DEF
+        example: RIC
+        type: string
+      split_ratio:
+        description: r = Original qty / New qty .  2 for 1 split = 0.5
+        example: 0.059567068
+        format: double
+        type: number
+      unique_reference:
+        default: No description supplied
+        description: Unique Corporate Action Reference
+        example: xyz123
+        type: string
+    required:
+    - security_id
+    - ex_date
+    - split_ratio
+    - event_timestamp
+    title: StockSplitPayload
+    type: object
+  Tag:
+    description: Tag media type (default view)
+    example:
+      tag: Sit dolorem ut reprehenderit.
+      tag_id: 5.627765e+18
+    properties:
+      tag:
+        example: Sit dolorem ut reprehenderit.
+        type: string
+      tag_id:
+        example: 5.627765e+18
+        format: int64
+        type: integer
+    title: 'Mediatype identifier: application/vnd.tag+json; view=default'
+    type: object
+  TagCollection:
+    description: TagCollection is the media type for an array of Tag (default view)
+    example:
+    - tag: Sit dolorem ut reprehenderit.
+      tag_id: 5.627765e+18
+    - tag: Sit dolorem ut reprehenderit.
+      tag_id: 5.627765e+18
+    items:
+      $ref: '#/definitions/Tag'
+    title: 'Mediatype identifier: application/vnd.tag+json; type=collection; view=default'
+    type: array
+  Transfer:
+    description: Transfer media type (default view)
+    example:
+      execution_timestamp: Animi quia in inventore a et molestiae.
+      from_book_name: Ut nobis ratione occaecati quo.
+      from_tag: Quo repudiandae.
+      person: Nesciunt rem eum qui alias.
+      quantity: Tempore eveniet iusto sed accusantium.
+      security_id: Sit aperiam ducimus deleniti repudiandae blanditiis.
+      settlement_book_fx_rate: Hic autem temporibus ut.
+      status: Delectus qui.
+      symbol: Id qui perferendis velit.
+      to_book_name: Numquam aut itaque magnam cum quis eum.
+      to_tag: Mollitia quaerat ipsam alias.
+      transfer_position_id: 4.8120335e+18
+      transfer_price: Consequuntur odio aut recusandae libero placeat a.
+      transfer_reason: Possimus laudantium perferendis cum aspernatur.
+    properties:
+      execution_timestamp:
+        example: Animi quia in inventore a et molestiae.
+        type: string
+      from_book_name:
+        example: Ut nobis ratione occaecati quo.
+        type: string
+      from_tag:
+        example: Quo repudiandae.
+        type: string
+      person:
+        example: Nesciunt rem eum qui alias.
+        type: string
+      quantity:
+        example: Tempore eveniet iusto sed accusantium.
+        type: string
+      security_id:
+        example: Sit aperiam ducimus deleniti repudiandae blanditiis.
+        type: string
+      settlement_book_fx_rate:
+        example: Hic autem temporibus ut.
+        type: string
+      status:
+        example: Delectus qui.
+        type: string
+      symbol:
+        example: Id qui perferendis velit.
+        type: string
+      to_book_name:
+        example: Numquam aut itaque magnam cum quis eum.
+        type: string
+      to_tag:
+        example: Mollitia quaerat ipsam alias.
+        type: string
+      transfer_position_id:
+        example: 4.8120335e+18
+        format: int64
+        type: integer
+      transfer_price:
+        example: Consequuntur odio aut recusandae libero placeat a.
+        type: string
+      transfer_reason:
+        example: Possimus laudantium perferendis cum aspernatur.
+        type: string
+    title: 'Mediatype identifier: application/vnd.transfer+json; view=default'
+    type: object
+  TransferCollection:
+    description: TransferCollection is the media type for an array of Transfer (default
+      view)
+    example:
+    - execution_timestamp: Animi quia in inventore a et molestiae.
+      from_book_name: Ut nobis ratione occaecati quo.
+      from_tag: Quo repudiandae.
+      person: Nesciunt rem eum qui alias.
+      quantity: Tempore eveniet iusto sed accusantium.
+      security_id: Sit aperiam ducimus deleniti repudiandae blanditiis.
+      settlement_book_fx_rate: Hic autem temporibus ut.
+      status: Delectus qui.
+      symbol: Id qui perferendis velit.
+      to_book_name: Numquam aut itaque magnam cum quis eum.
+      to_tag: Mollitia quaerat ipsam alias.
+      transfer_position_id: 4.8120335e+18
+      transfer_price: Consequuntur odio aut recusandae libero placeat a.
+      transfer_reason: Possimus laudantium perferendis cum aspernatur.
+    items:
+      $ref: '#/definitions/Transfer'
+    title: 'Mediatype identifier: application/vnd.transfer+json; type=collection;
+      view=default'
+    type: array
+  TransferPayload:
+    example:
+      from_book: Ab sed.
+      from_tag: Inventore optio quis consequatur et sunt totam.
+      quantity: 0.7049055
+      reason: Reblance between books
+      security_id: IBM.N
+      security_id_source: RIC
+      to_book: Repellat necessitatibus vel aliquid.
+      to_tag: Adipisci eos non.
+    properties:
+      from_book:
+        description: Source Book.
+        example: Ab sed.
+        type: string
+      from_tag:
+        description: Source Tag in book
+        example: Inventore optio quis consequatur et sunt totam.
+        type: string
+      quantity:
+        description: Signed quantity in units of the underlying instrument to transfer.
+          +ve for long holding -ve for short holding
+        example: 0.7049055
+        format: double
+        type: number
+      reason:
+        example: Reblance between books
+        type: string
+      security_id:
+        description: Security Identification, refer to SecurityIdSource field, e.g.
+          '10000000000001', 'ABC.O' or 'XYZ1 Comdty'.
+        example: IBM.N
+        type: string
+      security_id_source:
+        default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        example: RIC
+        type: string
+      to_book:
+        description: Target Book
+        example: Repellat necessitatibus vel aliquid.
+        type: string
+      to_tag:
+        description: Market Connector Code, ignored if [account] is set.
+        example: Adipisci eos non.
+        type: string
+    required:
+    - security_id
+    - reason
+    - quantity
+    - from_book
+    - from_tag
+    - to_book
+    - to_tag
+    title: TransferPayload
+    type: object
+  UpdateLimitLimitPayload:
+    example:
+      Limit_id: 1
+      enabled: false
+      lower_bound: 0
+      name: New Limit
+      params:
+        Adipisci quod consequuntur qui facere aut.: Molestias cum est sed.
+      upper_bound: 10000
+    properties:
+      Limit_id:
+        default: 1
+        description: Unique limit Id.
+        example: 1
+        format: int64
+        type: integer
+      enabled:
+        example: false
+        type: boolean
+      lower_bound:
+        description: Limits lower bound.
+        example: 0
+        format: double
+        type: number
+      name:
+        default: New Limit
+        description: Specifies a unique Trading limit name.
+        example: New Limit
+        type: string
+      params:
+        additionalProperties: true
+        description: A JSON list of parameters for this Trading limit type. One pair
+          for each parameter listed for the Master Trading Limit definition.
+        example:
+          Adipisci quod consequuntur qui facere aut.: Molestias cum est sed.
+        type: object
+      upper_bound:
+        description: Limits upper bound.
+        example: 10000
+        format: double
+        type: number
+    required:
+    - Limit_id
+    - lower_bound
+    - upper_bound
+    - params
+    title: UpdateLimitLimitPayload
+    type: object
+  ViewPositionPayload:
+    example:
+      end_date: 2016-07-03
+      fields:
+      - Temporibus est.
+      filters:
+      - Commodi enim sapiente excepturi repellat saepe vel.
+      - Commodi enim sapiente excepturi repellat saepe vel.
+      - Commodi enim sapiente excepturi repellat saepe vel.
+      funds:
+      - 9.140429e+17
+      - 9.140429e+17
+      groups:
+      - At veritatis architecto vel tenetur non.
+      - At veritatis architecto vel tenetur non.
+      include_drilldown: true
+      sort:
+      - Placeat veniam iure eos ullam.
+      - Placeat veniam iure eos ullam.
+      start_date: 2016-07-03
+    properties:
+      end_date:
+        example: 2016-07-03
+        type: string
+      fields:
+        example:
+        - Temporibus est.
+        items:
+          example: Temporibus est.
+          type: string
+        type: array
+      filters:
+        example:
+        - Commodi enim sapiente excepturi repellat saepe vel.
+        - Commodi enim sapiente excepturi repellat saepe vel.
+        - Commodi enim sapiente excepturi repellat saepe vel.
+        items:
+          example: Commodi enim sapiente excepturi repellat saepe vel.
+          type: string
+        type: array
+      funds:
+        example:
+        - 9.140429e+17
+        - 9.140429e+17
+        items:
+          example: 9.140429e+17
+          format: int64
+          type: integer
+        type: array
+      groups:
+        example:
+        - At veritatis architecto vel tenetur non.
+        - At veritatis architecto vel tenetur non.
+        items:
+          example: At veritatis architecto vel tenetur non.
+          type: string
+        type: array
+      include_drilldown:
+        default: true
+        example: true
+        type: boolean
+      sort:
+        example:
+        - Placeat veniam iure eos ullam.
+        - Placeat veniam iure eos ullam.
+        items:
+          example: Placeat veniam iure eos ullam.
+          type: string
+        type: array
+      start_date:
+        example: 2016-07-03
+        type: string
+    title: ViewPositionPayload
+    type: object
+  error:
+    description: Error response media type (default view)
+    example:
+      code: invalid_value
+      detail: Value of ID must be an integer
+      id: 3F1FKVRR
+      meta:
+        timestamp: 1.458609e+09
+      status: "400"
+    properties:
+      code:
+        description: an application-specific error code, expressed as a string value.
+        example: invalid_value
+        type: string
+      detail:
+        description: a human-readable explanation specific to this occurrence of the
+          problem.
+        example: Value of ID must be an integer
+        type: string
+      id:
+        description: a unique identifier for this particular occurrence of the problem.
+        example: 3F1FKVRR
+        type: string
+      meta:
+        additionalProperties: true
+        description: a meta object containing non-standard meta-information about
+          the error.
+        example:
+          timestamp: 1.458609e+09
+        type: object
+      status:
+        description: the HTTP status code applicable to this problem, expressed as
+          a string value.
+        example: "400"
+        type: string
+    title: 'Mediatype identifier: application/vnd.goa.error; view=default'
+    type: object
+info:
+  contact:
+    email: support@treotrade.com
+    name: TreoTrade ltd.
+    url: http://treotrade.com
+  description: REST API for the TreoTrade trading platform.
+  title: TreoTrade API
+  version: 1.0.0
+paths:
+  /account:
+    post:
+      description: |-
+        Find available broker accounts that can accept an order for a particular security by internal instrument_id
+
+        Required security scopes:
+          * `authToken`
+      operationId: account#Find
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/FindAccountPayload'
+      produces:
+      - application/vnd.account+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/AccountCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Find account
+      tags:
+      - account
+  /account/{account_id}:
+    get:
+      description: |-
+        Get account by ident.
+
+        Required security scopes:
+          * `authToken`
+      operationId: account#Get
+      parameters:
+      - description: Account ident.
+        in: path
+        name: account_id
+        required: true
+        type: integer
+      produces:
+      - application/vnd.account+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Account'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get account
+      tags:
+      - account
+  /authenticate:
+    get:
+      description: |-
+        Sign in and creates a valid API access token.
+
+        Authorisation Tokens retrieved via the API expire every 24 hrs.
+      operationId: auth#authenticate
+      responses:
+        "204":
+          description: No Content
+          headers:
+            Authorization:
+              description: Generated API access token
+              type: string
+        "401":
+          description: Unauthorized
+      schemes:
+      - http
+      summary: authenticate auth
+      tags:
+      - auth
+  /cms/cash_event:
+    get:
+      description: |-
+        List all cash events.
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#List Cash Events
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Cash Events cms
+      tags:
+      - cms
+    post:
+      description: |-
+        Create a new cash event.
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#New Cash Event
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/CashEventPayload'
+      produces:
+      - application/json
+      - application/vnd.goa.error
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: New Cash Event cms
+      tags:
+      - cms
+  /cms/cash_event/{cash_event_id}:
+    delete:
+      description: |-
+        Delete Cash Event.
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#Delete Cash Event
+      parameters:
+      - description: Unique cash event Id
+        in: path
+        name: cash_event_id
+        required: true
+        type: integer
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Delete Cash Event cms
+      tags:
+      - cms
+    get:
+      description: |-
+        Get cash event detail by cash_event_id
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#Get Cash Event
+      parameters:
+      - description: Cash Event id.
+        in: path
+        name: cash_event_id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get Cash Event cms
+      tags:
+      - cms
+  /cms/corp_action:
+    get:
+      description: |-
+        List Corporate Actions.
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#List Corporate Actions
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Corporate Actions cms
+      tags:
+      - cms
+    post:
+      description: |-
+        Create a new Corporate Action.
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#New Corporate Action
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/CorporateActionPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: New Corporate Action cms
+      tags:
+      - cms
+  /cms/corp_action/{corp_action_id}:
+    delete:
+      description: |-
+        Delete Corporate Action.
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#Delete Corporate Action
+      parameters:
+      - description: Unique Corporate Action Id
+        in: path
+        name: corp_action_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      - application/vnd.goa.error
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Delete Corporate Action cms
+      tags:
+      - cms
+    get:
+      description: |-
+        Get Corporate Action detail by corp_action_id
+
+        Required security scopes:
+          * `authToken`
+      operationId: cms#Get Corporate Action
+      parameters:
+      - description: Corporate Action id.
+        in: path
+        name: corp_action_id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get Corporate Action cms
+      tags:
+      - cms
+  /etl/fix_log:
+    get:
+      description: |-
+        export FIX logs by querying local ElasticSearch
+
+        Required security scopes:
+          * `authToken`
+      operationId: etl#export FIX logs
+      parameters:
+      - in: query
+        name: date
+        required: false
+        type: string
+      - in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - text/csv
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: export FIX logs etl
+      tags:
+      - etl
+  /etl/import_instruments:
+    post:
+      description: |-
+        import instruments for a given asset class
+
+        Required security scopes:
+          * `authToken`
+      operationId: etl#import instruments
+      parameters:
+      - in: query
+        name: asset_class
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: import instruments etl
+      tags:
+      - etl
+  /fund:
+    get:
+      description: |-
+        List visible fund book structure.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#List
+      produces:
+      - application/vnd.fund+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/FundCollection'
+      schemes:
+      - http
+      summary: List fund
+      tags:
+      - fund
+  /fund/{fund_id}/rollover/{date}:
+    post:
+      description: |-
+        Run roll over for start of day of a fund
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#roll over
+      parameters:
+      - in: path
+        name: date
+        required: true
+        type: string
+      - in: path
+        name: fund_id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+      schemes:
+      - http
+      summary: roll over fund
+      tags:
+      - fund
+  /fund/restricted:
+    get:
+      description: |-
+        List Restricted Instruments.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#List Restricted
+      produces:
+      - application/vnd.restricted+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/RestrictedCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Restricted fund
+      tags:
+      - fund
+    post:
+      description: |-
+        Upload Restricted Instrument.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#New Restricted
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/ResitctedInstrumentPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/vnd.restricted+json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/Restricted'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: New Restricted fund
+      tags:
+      - fund
+  /fund/restricted/{restrictedListID}:
+    delete:
+      description: |-
+        Remove Restricted.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#Remove Restricted
+      parameters:
+      - description: Restricted list id
+        in: path
+        name: restrictedListID
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - text/plain
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Remove Restricted fund
+      tags:
+      - fund
+  /fund/stock_loan:
+    delete:
+      description: |-
+        Delete Stock Loan List for a Prime Broker
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#Delete Stock Loan
+      parameters:
+      - description: Fund Name
+        in: query
+        name: fund_name
+        required: true
+        type: string
+      - description: Prime Broker
+        in: query
+        name: prime_broker_name
+        required: true
+        type: string
+      - description: Date
+        in: query
+        name: stock_loan_date
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Delete Stock Loan fund
+      tags:
+      - fund
+    get:
+      description: |-
+        List available borrows.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#List Available Stock
+      parameters:
+      - description: Fund Name
+        in: query
+        name: fund_name
+        required: false
+        type: string
+      - description: Prime Broker
+        in: query
+        name: prime_broker_name
+        required: false
+        type: string
+      - description: Security external id
+        in: query
+        name: security_id
+        required: false
+        type: string
+      - default: ID
+        description: 'Default to Client Security Master Ref. e.g. ''10000000000001''. '
+        enum:
+        - ID
+        - RIC
+        - BBG
+        - ISIN
+        in: query
+        name: security_id_source
+        required: false
+        type: string
+      - description: Date
+        in: query
+        name: stock_loan_date
+        required: false
+        type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Available Stock fund
+      tags:
+      - fund
+    post:
+      description: |-
+        Upload Stock Loan List.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#Upload Stock Loan
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/IndicativeAvailablityPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: Upload Stock Loan fund
+      tags:
+      - fund
+  /fund/tag:
+    get:
+      description: |-
+        List available Tags.
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#List Tag
+      produces:
+      - application/vnd.tag+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TagCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Tag fund
+      tags:
+      - fund
+  /fund/transfer:
+    get:
+      description: |-
+        List Position Transfers
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#List Position Transfers
+      produces:
+      - application/vnd.transfer+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TransferCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Position Transfers fund
+      tags:
+      - fund
+    post:
+      description: |-
+        Upload Position Transfer
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#New Position Transfer
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/TransferPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/vnd.transfer+json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/Transfer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: New Position Transfer fund
+      tags:
+      - fund
+  /fund/transfer/{transferPositionId}:
+    delete:
+      description: |-
+        Remove Position Transfer
+
+        Required security scopes:
+          * `authToken`
+      operationId: fund#Remove Position Transfer
+      parameters:
+      - description: Transfer Position Id
+        in: path
+        name: transferPositionId
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - text/plain
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Remove Position Transfer fund
+      tags:
+      - fund
+  /instrument:
+    get:
+      description: |-
+        Get instrument detail by ident. Only one ident term required.
+
+        Required security scopes:
+          * `authToken`
+      operationId: instrument#Get
+      parameters:
+      - description: Instrument client reference ident.
+        in: query
+        name: id
+        required: false
+        type: string
+      - description: Internal id.
+        in: query
+        name: internal_id
+        required: false
+        type: string
+      - description: Instrument symbol.
+        in: query
+        name: symbol
+        required: false
+        type: string
+      produces:
+      - application/vnd.instrument+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Instrument'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get instrument
+      tags:
+      - instrument
+  /instrument/close_price:
+    get:
+      description: |-
+        List historical unadjusted closing price for instrument by (id, symbol, or internal_id) in params
+
+        Required security scopes:
+          * `authToken`
+      operationId: instrument#list closing price
+      parameters:
+      - description: Instrument client reference ident.
+        in: query
+        name: id
+        required: false
+        type: string
+      - description: Treotrade instrument id
+        in: query
+        name: internal_id
+        required: false
+        type: string
+      - description: Instrument symbol.
+        in: query
+        name: symbol
+        required: false
+        type: string
+      responses:
+        "200":
+          description: OK
+      schemes:
+      - http
+      summary: list closing price instrument
+      tags:
+      - instrument
+    post:
+      description: |-
+        Insert unadjusted closing price for instrument by external id
+
+        Required security scopes:
+          * `authToken`
+      operationId: instrument#closing price
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/ClosingPriceInstrumentPayload'
+      responses:
+        "200":
+          description: OK
+      schemes:
+      - http
+      summary: closing price instrument
+      tags:
+      - instrument
+  /instrument/search:
+    get:
+      description: |-
+        Search instrument by terms. Results are returned as best scoring match list of instrument.
+
+        Required security scopes:
+          * `authToken`
+      operationId: instrument#Search
+      parameters:
+      - in: query
+        name: term
+        required: true
+        type: string
+      produces:
+      - application/vnd.instrument+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/InstrumentSummaryCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Search instrument
+      tags:
+      - instrument
+  /limit:
+    get:
+      description: |-
+        List all Trading Limits.
+
+        Required security scopes:
+          * `authToken`
+      operationId: limit#List
+      produces:
+      - application/vnd.limit+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/LimitCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List limit
+      tags:
+      - limit
+    post:
+      description: |-
+        Create a new Trading limit.
+
+        Required security scopes:
+          * `authToken`
+      operationId: limit#New Limit
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/LimitPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/vnd.limit+json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/Limit'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: New Limit limit
+      tags:
+      - limit
+    put:
+      description: |-
+        Amend a Trading limit's bounds and/or params.
+
+        Required security scopes:
+          * `authToken`
+      operationId: limit#Update Limit
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/UpdateLimitLimitPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/vnd.limit+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Limit'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Update Limit limit
+      tags:
+      - limit
+  /limit/{limit_id}:
+    delete:
+      description: |-
+        Delete Trading Limit.
+
+        Required security scopes:
+          * `authToken`
+      operationId: limit#Delete Limit
+      parameters:
+      - description: Unique limit Id
+        in: path
+        name: limit_id
+        required: true
+        type: integer
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Delete Limit limit
+      tags:
+      - limit
+    get:
+      description: |-
+        Get Trading limit detail by limit_id
+
+        Required security scopes:
+          * `authToken`
+      operationId: limit#Get
+      parameters:
+      - description: Limit id.
+        in: path
+        name: limit_id
+        required: true
+        type: integer
+      produces:
+      - application/vnd.limit+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Limit'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get limit
+      tags:
+      - limit
+  /limit/master:
+    get:
+      description: |-
+        List Master Trading Limit defintions.
+
+        Required security scopes:
+          * `authToken`
+      operationId: limit#List Master Limits
+      produces:
+      - application/vnd.masterlimit+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/MasterlimitCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List Master Limits limit
+      tags:
+      - limit
+  /order:
+    delete:
+      description: |-
+        Cancel order.
+
+        Required security scopes:
+          * `authToken`
+      operationId: order#Cancel Order
+      parameters:
+      - description: Unique client order ID
+        in: query
+        name: clOrdId
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - text/plain
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Cancel Order order
+      tags:
+      - order
+    get:
+      description: |-
+        List all live orders or search by parameters.
+
+        Required security scopes:
+          * `authToken`
+      operationId: order#List
+      parameters:
+      - description: Search end time in RFC3339/ISO8601 format, if missing default
+          to now.
+        in: query
+        name: end
+        required: false
+        type: string
+      - description: Search start time in RFC3339/ISO8601 format. E.g. 2006-01-02T15:04:05Z
+        in: query
+        name: start
+        required: false
+        type: string
+      produces:
+      - application/vnd.order+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/OrderCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: List order
+      tags:
+      - order
+    post:
+      description: |-
+        Create a new order.
+
+        Required security scopes:
+          * `authToken`
+      operationId: order#New Order
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/OrderPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/vnd.complianceresult+json
+      - application/vnd.order+json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/Order'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Complianceresult'
+      schemes:
+      - http
+      summary: New Order order
+      tags:
+      - order
+    put:
+      description: |-
+        Amend the quantity, price or algo of an open order.
+
+        Required security scopes:
+          * `authToken`
+      operationId: order#Replace Order
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/ReplaceOrderOrderPayload'
+      produces:
+      - application/vnd.goa.error
+      - application/vnd.complianceresult+json
+      - application/vnd.order+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Order'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+        "404":
+          description: Not Found
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Complianceresult'
+      schemes:
+      - http
+      summary: Replace Order order
+      tags:
+      - order
+  /order/allocation:
+    get:
+      description: |-
+        Get order allocations.
+
+        Required security scopes:
+          * `authToken`
+      operationId: order#Get Order Allocations
+      parameters:
+      - description: Unique client order ID
+        in: query
+        name: clOrdId
+        required: true
+        type: string
+      produces:
+      - application/vnd.allocation+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/AllocationCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get Order Allocations order
+      tags:
+      - order
+  /order/execution:
+    get:
+      description: |-
+        Get order execution history.
+
+        Required security scopes:
+          * `authToken`
+      operationId: order#Get Order Executions
+      parameters:
+      - description: Unique client order ID
+        in: query
+        name: clOrdId
+        required: true
+        type: string
+      produces:
+      - application/vnd.execution+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ExecutionCollection'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get Order Executions order
+      tags:
+      - order
+  /position:
+    get:
+      description: |-
+        List all open positions. For view query with real-time fields refer to POST:/position/view
+
+        Required security scopes:
+          * `authToken`
+      operationId: position#list
+      parameters:
+      - description: TreoTrade Instrument ident.
+        in: query
+        name: instrument_id
+        required: false
+        type: integer
+      produces:
+      - application/vnd.position+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/PositionCollection'
+      schemes:
+      - http
+      summary: list position
+      tags:
+      - position
+  /position/{position_key}/transaction:
+    get:
+      description: |-
+        List position transactions history
+
+        Required security scopes:
+          * `authToken`
+      operationId: position#transaction list
+      parameters:
+      - description: Position Key Ident.
+        in: path
+        name: position_key
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+      schemes:
+      - http
+      summary: transaction list position
+      tags:
+      - position
+  /position/view:
+    post:
+      description: |-
+        Position view by query builder
+
+        Required security scopes:
+          * `authToken`
+      operationId: position#view
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/ViewPositionPayload'
+      responses:
+        "200":
+          description: OK
+      schemes:
+      - http
+      summary: view position
+      tags:
+      - position
+  /quote:
+    get:
+      description: |-
+        Get initial quote from pricefeed.
+
+        Required security scopes:
+          * `authToken`
+      operationId: quote#Get Initial
+      parameters:
+      - description: Instrument symbol.
+        in: query
+        name: symbol
+        required: true
+        type: string
+      produces:
+      - application/vnd.quote+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Quote'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: Get Initial quote
+      tags:
+      - quote
+  /realtime:
+    get:
+      description: "Realtime websocket server.\n\nYou can use REST token to authenticate
+        by sending the authToken key in params. If the websocket library you use cannot
+        send querystrings, use an authentication header instead. Your connection string
+        will look something like:\n\n```\nws://prod-lon-t1.treotrade.com/realtime?authToken=pV1CPhfZWUlZM93vvxp1wRKCAwrHg67F36t3DJBl7USGGk8eH3MFlbEL0bz0dywp\n```\n\nIf
+        you are already connected and wish to subscribe to a new topic, send a message
+        with the following format:\n```\n{\"op\": \"subscribe\", \"topic\": <SubscriptionTopic>}\n```\n\nThe
+        following subscription topics are available:\n* **order.Order**\n* **order.Execution**\n*
+        **price.Quote.RIC:<ABC.D>**\n* **service.Heartbeat.>**\n\n\n\t\t"
+      operationId: ws#connect
+      parameters:
+      - description: API access token, acquire by http GET /authenticate.
+        in: query
+        name: authToken
+        required: false
+        type: string
+      responses:
+        "101":
+          description: Switching Protocols
+      schemes:
+      - ws
+      summary: connect ws
+      tags:
+      - ws
+  /user:
+    get:
+      description: |-
+        Who am i.
+
+        Required security scopes:
+          * `authToken`
+      operationId: user#Get
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unauthorized
+      schemes:
+      - http
+      summary: Get user
+      tags:
+      - user
+  /user/_all:
+    get:
+      description: |-
+        List related users.
+
+        Required security scopes:
+          * `authToken`
+      operationId: user#List
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: List user
+      tags:
+      - user
+  /user/{username}/permissions/{permission}:
+    delete:
+      description: |-
+        Deletes a permission from user permission list.
+
+        Required security scopes:
+          * `authToken`
+      operationId: user#Delete Permission
+      parameters:
+      - in: path
+        name: permission
+        required: true
+        type: string
+      - in: path
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: Delete Permission user
+      tags:
+      - user
+    put:
+      description: |-
+        Inserts a permission for a user.
+
+        Required security scopes:
+          * `authToken`
+      operationId: user#Insert Permission
+      parameters:
+      - in: path
+        name: permission
+        required: true
+        type: string
+      - in: path
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/vnd.goa.error
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: Insert Permission user
+      tags:
+      - user
+  /user/{username}/role/{role}:
+    put:
+      description: |-
+        Update role for a user.
+
+        Required security scopes:
+          * `authToken`
+      operationId: user#Update Role
+      parameters:
+      - in: path
+        name: role
+        required: true
+        type: string
+      - in: path
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      - application/vnd.goa.error
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+      schemes:
+      - http
+      summary: Update Role user
+      tags:
+      - user
+produces:
+- application/json
+schemes:
+- http
+securityDefinitions:
+  SigninBasicAuth:
+    type: basic
+  authToken:
+    description: |2-
+      **Security Scopes**:
+        * `authToken`: API access token
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

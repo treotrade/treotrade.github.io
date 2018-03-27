@@ -393,3 +393,10 @@ footer div[class^="col-"]{
     text-align: center;
     margin-top: 30px
 }
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
